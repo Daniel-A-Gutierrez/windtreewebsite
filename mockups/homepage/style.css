@@ -6,9 +6,27 @@ get image sliders working
 get testimonial slider working.
 */
 
+@import url('fonts/fontello/css/fontello.css');
+
+@font-face
+{
+    font-family : "Poppins";
+    src : url('fonts/Poppins-Medium.ttf') format("truetype");
+    font-weight : normal;
+    font-style : normal;
+}
+
+@font-face
+{
+    font-family : "Roboto";
+    src: url("fonts/Roboto-Medium.ttf") format("truetype");
+    font-weight: normal;
+    font-style : normal;
+}
+
 body{
     margin:0;
-    font-family:"Poppins",sans-serif;
+    font-family:'Poppins',sans-serif;
 }
 
 #navbar
@@ -25,21 +43,26 @@ body{
     justify-content:space-between;
     margin:0px;
     border-bottom: darkgrey solid 1px;
+    /*align-items: center; for some reason this breaks the icon*/
     z-index: 1;
 }
 
 .navbar-link-list
 {
+    align-self:center;
 }
 
 .navbar-icon
 {
     max-width: 250px;
+    max-height : 100%;
+
 }
 
 .navbar-icon > img
 {
     display:block;
+    position:relative;
     max-height:100%;
     padding-left:16px;
 }
@@ -53,7 +76,7 @@ body{
 {
     text-decoration:none; 
     padding:0px 10px;
-    font-weight:500;
+    font-weight:600;
     font-size : 15px;
     font-style:normal;
 }
@@ -146,24 +169,30 @@ body{
 {
     position:absolute;
     z-index: 1;
-    top: calc(50% - 30px);
-    left: calc(25% - 30px);
+    top: calc(50% - 45px);
+    left: calc(25% - 45px);
     font-size:60px;
     color : #000;
-    transition: transform .5s;
+    transition: transform .5s , color .3s;
     user-select : none;
 }
 .slides-right
 {
     position:absolute;
     z-index: 1;
-    top: calc(50% - 30px);
-    left: calc(75% - 30px);
+    top: calc(50% - 45px);
+    left: calc(75% - 45px);
     font-size:60px;
     color : #000;
-    transition: transform .5s;
+    transition: transform .5s ,color .3s;
     user-select : none;
 }
+
+.slides-left:hover, .slides-right:hover
+{
+    color: #999;
+}
+
 .slides
 {
     width:33.333%;
@@ -345,9 +374,14 @@ body{
     top: calc(50% - 30px);
     left: calc(2.5% - 30px);
     font-size:60px;
-    color : #000;
-    transition: transform .5s;
+    color : #eee;
+    transition: transform .5s , color .25s;
     user-select : none;
+}
+
+.gallery-left:hover, .gallery-right:hover
+{
+    color:#444;
 }
 
 .gallery-right
@@ -357,8 +391,8 @@ body{
     top: calc(50% - 30px);
     left: calc(97.5% - 30px);
     font-size:60px;
-    color : #000;
-    transition: transform .5s;
+    color : #eee;
+    transition: transform .5s , color .25s;
     user-select : none;
 }
 
