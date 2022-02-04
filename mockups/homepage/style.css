@@ -1,3 +1,11 @@
+/*
+todo : 
+get font awesome in here for drop down icons
+get poppins font in
+get image sliders working
+get testimonial slider working.
+*/
+
 body{
     margin:0;
     font-family:"Poppins",sans-serif;
@@ -118,13 +126,72 @@ body{
     font-weight:bold;
 }
 
-.slides
+.overview
 {
     display:flex;
     flex-direction:column;
     align-items:center;
-    border: black solid 1px;
+    justify-content:center;
+    height:540px;
+    position:relative;
+}
 
+.slides-container
+{
+    position:relative;
+    overflow:hidden;
+    width : 700px;
+}
+.slides-left
+{
+    position:absolute;
+    z-index: 1;
+    top: calc(50% - 30px);
+    left: calc(25% - 30px);
+    font-size:60px;
+    color : #000;
+    transition: transform .5s;
+    user-select : none;
+}
+.slides-right
+{
+    position:absolute;
+    z-index: 1;
+    top: calc(50% - 30px);
+    left: calc(75% - 30px);
+    font-size:60px;
+    color : #000;
+    transition: transform .5s;
+    user-select : none;
+}
+.slides
+{
+    width:33.333%;
+    display:flex;
+    flex-direction: row;
+    position:relative;
+    transition:left .75s;
+}
+
+
+
+.slide
+{
+    display:block;
+    flex-shrink:0;
+}
+
+.slides-pagination
+{
+    font-size:2em;
+    transition : transform .5s;
+}
+
+.slides-dot
+{
+    display:inline-block;
+    transition: transform .5s;
+    opacity : .9;
 }
 
 .programs
@@ -257,11 +324,62 @@ body{
     justify-content: center;
 }
 
-.image-slider2
+.image-gallery
 {
-    text-align: center;
-    line-height:350px;
+    display:flex;
+    padding: 10px 0px;
+    margin-top:75px;
+    position:relative;
+    overflow:hidden;
 }
+
+.gallery-controls
+{
+    position:relative;
+}
+
+.gallery-left
+{
+    position:absolute;
+    z-index: 1;
+    top: calc(50% - 30px);
+    left: calc(2.5% - 30px);
+    font-size:60px;
+    color : #000;
+    transition: transform .5s;
+    user-select : none;
+}
+
+.gallery-right
+{
+    position:absolute;
+    z-index:1;
+    top: calc(50% - 30px);
+    left: calc(97.5% - 30px);
+    font-size:60px;
+    color : #000;
+    transition: transform .5s;
+    user-select : none;
+}
+
+.gallery-images
+{
+    position:relative;
+    width:100%;
+    left: -200%;
+    display:flex;
+    transition:left .75s;
+}
+
+.gallery-image
+{
+    display:block;
+    flex-shrink:0;
+    width:33.333%;
+}
+
+
+
 
 .testimonials
 {
@@ -272,7 +390,7 @@ body{
 .testimonials
 {
     display:flex;
-    background-image: url('images/footer-bkg.jpg');
+    background-image: url('images/testimonials-bkg.jpg');
     background-color:black;
     background-size:auto;
     background-position:center right;
@@ -314,7 +432,9 @@ body{
 {
     position:relative;
 }
-.reactions-controls{}
+
+.reactions-controls{color:#999;}
+
 .reactions-left
 {
     display:block;
@@ -322,31 +442,69 @@ body{
     top: calc(50% - 1rem);
     left: calc(35px + 1rem );
     font-size: 2rem;
+    color:inherit;
+    z-index:1;
+    transition: transform .5s;
+    user-select : none;
 }
+
+.reactions-left:hover , .reactions-right:hover
+{
+    color:#222;
+}
+
 .reactions-right
 {
-    display:block;
-    position:absolute;
     display:block;
     position:absolute;
     top: calc(50% - 1rem);
     right: calc(30% - 125px + 1rem);
     font-size: 2rem;
+    color:inherit;
+    z-index:1;
+    transition: transform .5s;
+    user-select : none;
+
 }
-.reactions
+.reactions-box
 {
     position:relative;
     box-sizing: border-box;
     left:35px;
+    /*display:flex;*/
+    /*flex-direction: row;*/
+    width: calc(70% + 90px);
+    padding: 0px; /*15px 65px 15px 65px; No padding or scrolling doesnt work*/
+    background-color:#ffffff90;
+    overflow:hidden; /*Secret sauce*/
+    transition: all .5s;
+}
+
+.reactions
+{
+    position:relative;
     display:flex;
     flex-direction: row;
-    width: calc(70% + 90px);
-    padding:15px 65px 15px 65px;
-    background-color:#ffffff90;
+    left:65px;
+    transition: left .75s;
 }
-.reaction{}
-.reaction>h5{}
-.reaction>p{}
+
+.reaction
+{
+    width: calc(100%);
+    box-sizing: border-box;
+    padding: 0px 130px 0px 0px;
+    flex-shrink: 0; /*SECRET SAUCE*/
+}
+
+
+.reaction>h5{margin : 20px 0px 10px 0px;}
+.reaction>p
+{
+    color : #5c666a;
+    line-height:1.5;
+    margin-top:10px;
+}
             
 footer
 {
