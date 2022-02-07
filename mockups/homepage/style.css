@@ -24,11 +24,26 @@ get testimonial slider working.
     font-style : normal;
 }
 
+
+
+/*
+todo : 
+get font awesome in here for drop down icons
+get poppins font in
+get image sliders working
+get testimonial slider working.
+*/
+
+/*@import url('fonts/fontello/css/fontello.css');*/
+
+
+
 body{
     margin:0;
     font-family:'Poppins',sans-serif;
 }
 
+/*----------------NAVBAR---------------------*/
 #navbar
 {
     position:fixed;
@@ -82,6 +97,8 @@ body{
 }
 .dropdown{}
 
+
+/*----------------BANNER---------------------*/
 /*do these next*/
 .banner
 {
@@ -128,6 +145,9 @@ body{
 }
 .banner-slogan{font-size:18px;}
 
+/*----------------ANNOUNCEMENTS---------------------*/
+
+
 .announcements
 {
     display:flex;
@@ -148,6 +168,9 @@ body{
     border:darkslategrey double 10px;
     font-weight:bold;
 }
+
+/*----------------OVERVIEW---------------------*/
+
 
 .overview
 {
@@ -223,6 +246,9 @@ body{
     opacity : .9;
 }
 
+/*----------------PROGRAMS---------------------*/
+
+
 .programs
 {
     display:flex;
@@ -295,6 +321,9 @@ body{
     font-weight:bold;
 }
 
+/*----------------ABOUT US---------------------*/
+
+
 .about-us
 {
     display:flex;
@@ -352,6 +381,10 @@ body{
     display:flex;
     justify-content: center;
 }
+
+/*----------------GALLERY---------------------*/
+
+
 
 .image-gallery
 {
@@ -413,6 +446,7 @@ body{
 }
 
 
+/*----------------TESTIMONIALS---------------------*/
 
 
 .testimonials
@@ -540,6 +574,9 @@ body{
     margin-top:10px;
 }
             
+/*----------------FOOTER---------------------*/
+
+
 footer
 {
     background-color:#22253a;
