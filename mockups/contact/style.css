@@ -70,7 +70,6 @@ body{
 {
     max-width: 250px;
     max-height : 100%;
-
 }
 
 .navbar-icon > img
@@ -101,16 +100,17 @@ body{
 {
     display:flex;
     justify-content:center;
+    flex-direction: column;
+    align-items:center;
+    margin-top:calc(86px + 43px);
+    margin-bottom: 86px;
 }
 
 .main-content
 {
-    margin-top:calc(86px + 43px);
-    margin-bottom: 86px;
     width:55%;
-    align-items: left;
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 .title
 {
@@ -122,8 +122,7 @@ body{
 {
     border:black 1px solid;
     margin:33px;
-    width:50%;
-    align-self:center;
+    height: 300px;
 }
 
 h1
@@ -138,6 +137,7 @@ h2
     color: #4d4d4d;
     font-size:30px;
 }
+
 p
 {
     color:#000;
@@ -145,34 +145,49 @@ p
     line-height: 1.8;
 }
 
-/*----------------DETAILS---------------------*/
-.details-container
+/*FORM*/
+
+form 
 {
-    border: black 1px solid;
-    border-radius: 2px;
+    flex:3;
 }
 
-details
+label
 {
-    background-color: hsl(240deg, 10%, 95%);
-    
-    color:#4d4d4d;
-    padding:5px;
-    /*margin:5px 5px 5px 0px;*/
-    box-shadow: 0px 1px 2px black;
-    cursor:pointer;
-}
-details>summary
-{
-    font-size:1.25rem;
+    display:block;
+    margin:40px 40px 40px 0px;
 }
 
+input , textarea
+{
+    display:block;
+    width:100%;
+    border: #333 1px solid;
+    height:27px;
+    padding: 8px 5px 8px 15px;
+    background-color:#eee;
+    resize: none;
+}
+
+
+.message-input
+{
+    width:100%;
+    height:100%;
+}
+
+/*ADDRESS*/
+
+.location
+{
+    flex:1
+}
 
 /*----------------DIVBTN---------------------*/
 .divbtn
 {
     box-sizing:border-box;
-    display:flex;
+    display:inline-flex;
     align-self:center;
     padding:10px 15px 10px 15px;
     background-color:#4a82b2;

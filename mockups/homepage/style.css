@@ -310,6 +310,7 @@ body{
     height:45px;
     text-align: center;
     align-items:center;
+    user-select: none;
 }
 
 .divbtn:hover
