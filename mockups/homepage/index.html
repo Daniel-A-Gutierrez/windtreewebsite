@@ -5,29 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='icon' type='image/x-icon' href='images/faviconV2.png'>
+    <link rel='preload' as='image' href='images/windtree-logo.png'>
     <link rel="preload" href="fonts/Poppins-Medium.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="fonts/Roboto-Medium.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="fonts/fontello/font/fontello.ttf" as="font" type="font/ttf" crossorigin>
     <link rel='stylesheet', href='/fonts/fontello/css/fontello.css'>
     <link rel='stylesheet', href='style.css'>
+    <script defer src='components.js'></script>
     <script defer src="main.js"></script>
     <title>Windtree Education</title>
 </head>
 <body>
-    <nav id="navbar">
-        <div class="navbar-icon"><image src='images/windtree-logo.png'></div>
-        <ul class="navbar-link-list">
-            <a class="navbar-link"href="../homepage/index.html">HOME</a>
-            <a class="navbar-link"href="../about/index.html">ABOUT</a>
-            <a class="navbar-link"href="">EDUCATORS</a>
-            <a class="navbar-link dropdown"href="">PROGRAMS</a>
-            <a class="navbar-link dropdown"href="">SCHOOLS</a>
-            <a class="navbar-link"href="">COMPETITION</a>
-            <a class="navbar-link"href="../careers/index.html">CAREERS</a>
-            <a class="navbar-link"href="">SPONSORSHIP</a>
-            <a class="navbar-link"href="../contact/index.html">CONTACT US</a>
-        </ul>
-    </nav>
+    <nav-bar></nav-bar>
     <div class="banner">
         <div class="banner-welcome">
             <div class="banner-name">Windtree Education</div>
@@ -206,6 +195,6 @@
             </div>
         </div>
     </section>
-    <footer>© WINDTREE EDUCATION (Los Angeles, California, USA) All Rights Reserved </footer>
+    <footer-bar></footer-bar>
 </body>
 </html>

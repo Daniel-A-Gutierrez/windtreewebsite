@@ -3,8 +3,7 @@ class Navbar extends HTMLElement
     constructor()
     {
         super();
-        this.innerHTML = 
-        `<style>
+        this.innerHTML = `<style>
             #navbar
             {
                 position:fixed;
@@ -19,7 +18,6 @@ class Navbar extends HTMLElement
                 justify-content:space-between;
                 margin:0px;
                 border-bottom: darkgrey solid 1px;
-                /*align-items: center; for some reason this breaks the icon*/
                 z-index: 1;
             }
 
@@ -69,11 +67,35 @@ class Navbar extends HTMLElement
                 <a class="navbar-link"href="">COMPETITION</a>
                 <a class="navbar-link"href="../careers/index.html">CAREERS</a>
                 <a class="navbar-link"href="">SPONSORSHIP</a>
-                <a class="navbar-link"href="../contact/index.html">CONTACT US</a>
+                <a class="navbar-link"href="../contact/contact.html">CONTACT US</a>
             </ul>
         </nav>
         `;
     }
 }
 
-window.customElements.define("navbar",Navbar);
+class Footer extends HTMLElement
+{
+    constructor()
+    {
+        super();
+        this.innerHTML= `
+        <style>
+        footer
+        {
+            background-color:#22253a;
+            border-top: rgba(255,255,255,.15) solid 1px;
+            color:slategrey;
+            text-align: center;
+            text-justify: center;
+            box-sizing: border-box;
+            padding:40px;
+        }
+        </style>
+        <footer>© WINDTREE EDUCATION (Los Angeles, California, USA) All Rights Reserved </footer>
+        `
+    }
+}
+
+window.customElements.define("nav-bar",Navbar);
+window-customElements.define("footer-bar", Footer);
