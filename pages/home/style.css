@@ -1,0 +1,514 @@
+/*
+todo : 
+get font awesome in here for drop down icons
+get poppins font in
+get image sliders working
+get testimonial slider working.
+*/
+
+/*@import url('fonts/fontello/css/fontello.css');*/
+
+
+/*----------------NAVBAR---------------------*/
+
+/*----------------BANNER---------------------*/
+/*do these next*/
+.banner
+{
+    background-image:url("images/Robotics-Camp-0031-compressed.jpg");
+    background-size:cover;
+    background-position : center center;
+    background-attachment: fixed;
+    width:100%;
+    padding-top:86px;
+    height:775px;
+    color:white;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+}
+
+
+.banner-welcome
+{
+    text-align: center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background-color:rgba(84,89,95,.72);
+    width:420px;
+    height:200px;
+    padding:100px;
+    border: rgba(255,255,255,.8) double 10px;
+    border-radius:3px;
+}
+
+.banner-name
+{
+    font-size:48px;
+    width:420px;
+}
+
+.banner-divider
+{
+    border-top: white solid 3px;
+    width : 100px;
+    margin : 1em 0 1.5em 0;
+}
+.banner-slogan{font-size:18px;}
+
+/*----------------ANNOUNCEMENTS---------------------*/
+
+
+.announcements
+{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+}
+
+.announcement
+{
+    width:800px;
+    height:auto;
+    color:#10242b;
+    line-height:1.5;
+    font-size:20px;
+    padding:15px;
+    margin:50px 150px 50px 150px;
+    border:darkslategrey double 10px;
+    font-weight:bold;
+}
+
+/*----------------OVERVIEW---------------------*/
+
+
+.overview
+{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    height:540px;
+    position:relative;
+}
+
+.slides-container
+{
+    position:relative;
+    overflow:hidden;
+    width : 700px;
+}
+.slides-left
+{
+    position:absolute;
+    z-index: 1;
+    top: calc(50% - 45px);
+    left: calc(25% - 45px);
+    font-size:60px;
+    color : #000;
+    transition: transform .5s , color .3s;
+    user-select : none;
+}
+.slides-right
+{
+    position:absolute;
+    z-index: 1;
+    top: calc(50% - 45px);
+    left: calc(75% - 45px);
+    font-size:60px;
+    color : #000;
+    transition: transform .5s ,color .3s;
+    user-select : none;
+}
+
+.slides-left:hover, .slides-right:hover
+{
+    color: #999;
+}
+
+.slides
+{
+    width:33.333%;
+    display:flex;
+    flex-direction: row;
+    position:relative;
+    transition:left .75s;
+}
+
+
+
+.slide
+{
+    display:block;
+    flex-shrink:0;
+}
+
+.slides-pagination
+{
+    font-size:2em;
+    transition : transform .5s;
+}
+
+.slides-dot
+{
+    display:inline-block;
+    transition: transform .5s;
+    opacity : .9;
+}
+
+/*----------------PROGRAMS---------------------*/
+
+
+.programs
+{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    height:235px;
+    background-color: #e8e8e8;
+}
+
+.program
+{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:225px;
+    height:235px;
+    position:relative;
+}
+
+.program>img
+{
+    display:block;
+    position:absolute;
+    top:15px;
+    margin-bottom:20px;
+    transition: all .3s ease-in-out;
+}
+
+.program>img[alt="Robotics"]
+{
+    left:50px;
+}
+
+.program>img:hover
+{
+    transform: scale(1.1);
+}
+
+.program>div
+{
+    position:absolute;
+    top:175px;
+}
+
+
+/*----------------DIV BUTTON---------------------*/
+
+.divbtn
+{
+    box-sizing:border-box;
+    display:flex;
+    align-self:center;
+    padding:10px 15px 10px 15px;
+    background-color:#4a82b2;
+    box-shadow:0px 0px 5px 0px rgba(0,0,0,.5);
+    transition: all .3s ease-in-out;
+    color:white;
+    height:45px;
+    text-align: center;
+    align-items:center;
+    user-select: none;
+}
+
+.divbtn:hover
+{
+    background-color: #81c341;
+    box-shadow:0px 0px 5px 0px rgba(0,0,0,.5);
+}
+
+.divbtn>a 
+{
+    font-size:24px;
+    font-weight:bold;
+}
+
+/*----------------ABOUT US---------------------*/
+
+
+.about-us
+{
+    display:flex;
+    flex-direction:row;
+    margin-top:70px;
+}
+
+.about-us-body
+{
+    flex:1;
+    display:flex;
+    align-items:center;
+    flex-direction: column;
+    width:615px;
+    justify-content: center;
+}
+
+.about-us-title
+{
+    color:#81c341;
+    font-size:50px;
+    font-family: "Roboto", sans-serif;
+    font-weight:600;
+}
+
+.about-us-text
+{
+    color:#7a7a7a;
+    font-family: "Roboto", sans-serif;
+    font-weight:400;
+    font-size:18px;
+    margin:0px 0px 15px 0px;
+    line-height:1.5;
+    padding:20px 50px 10px 50px;
+    width:515px;
+    margin-bottom:15px;
+}
+
+.about-us-body>.divbtn
+{
+    border-radius:3px;
+    font-size: 15px;
+    margin-top:20px;
+}
+
+.about-us-body>.divbtn>a
+{
+    border-radius:3px;
+    font-size: 15px;
+}
+
+.about-us-img
+{
+    flex:2;
+    display:flex;
+    justify-content: center;
+}
+
+/*----------------GALLERY---------------------*/
+
+
+
+.image-gallery
+{
+    display:flex;
+    padding: 10px 0px;
+    margin-top:75px;
+    position:relative;
+    overflow:hidden;
+}
+
+.gallery-controls
+{
+    position:relative;
+}
+
+.gallery-left
+{
+    position:absolute;
+    z-index: 1;
+    top: calc(50% - 30px);
+    left: calc(2.5% - 30px);
+    font-size:60px;
+    color : #eee;
+    transition: transform .5s , color .25s;
+    user-select : none;
+}
+
+.gallery-left:hover, .gallery-right:hover
+{
+    color:#444;
+}
+
+.gallery-right
+{
+    position:absolute;
+    z-index:1;
+    top: calc(50% - 30px);
+    left: calc(97.5% - 30px);
+    font-size:60px;
+    color : #eee;
+    transition: transform .5s , color .25s;
+    user-select : none;
+}
+
+.gallery-images
+{
+    position:relative;
+    width:100%;
+    left: -200%;
+    display:flex;
+    transition:left .75s;
+}
+
+.gallery-image
+{
+    display:block;
+    flex-shrink:0;
+    width:33.333%;
+}
+
+
+/*----------------TESTIMONIALS---------------------*/
+
+
+.testimonials
+{
+    display:flex;
+}
+
+
+.testimonials
+{
+    display:flex;
+    background-image: url('images/testimonials-bkg.jpg');
+    background-color:black;
+    background-size:auto;
+    background-position:center right;
+}
+.testimonials-container
+{
+    background-color:rgba(0,55,110,.83);
+    width:100%;
+    height:300px;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+}
+.testimonials-contact
+{
+    color:white;
+    flex-direction:column;
+    align-items: center;
+    align-content:center;
+    margin-left:10%;
+}
+.testimonials-contact>h2 {}
+.testimonials-contact>p{}
+.testimonials-spacer
+{
+    height:66%;
+    border:white 2px solid;
+}
+.testimonials-reactions
+{
+    width:66%;
+}
+.testimonials-reactions>h2
+{
+    color:white;
+    margin-bottom:15px;
+}
+.reactions-container
+{
+    position:relative;
+}
+
+.reactions-controls{color:#999;}
+
+.reactions-left
+{
+    display:block;
+    position:absolute;
+    top: calc(50% - 1rem);
+    left: calc(35px + 1rem );
+    font-size: 2rem;
+    color:inherit;
+    z-index:1;
+    transition: transform .5s;
+    user-select : none;
+}
+
+.reactions-left:hover , .reactions-right:hover
+{
+    color:#222;
+}
+
+.reactions-right
+{
+    display:block;
+    position:absolute;
+    top: calc(50% - 1rem);
+    right: calc(30% - 125px + 1rem);
+    font-size: 2rem;
+    color:inherit;
+    z-index:1;
+    transition: transform .5s;
+    user-select : none;
+
+}
+.reactions-box
+{
+    position:relative;
+    box-sizing: border-box;
+    left:35px;
+    /*display:flex;*/
+    /*flex-direction: row;*/
+    width: calc(70% + 90px);
+    padding: 0px; /*15px 65px 15px 65px; No padding or scrolling doesnt work*/
+    background-color:#ffffff90;
+    overflow:hidden; /*Secret sauce*/
+    transition: all .5s;
+}
+
+.reactions
+{
+    position:relative;
+    display:flex;
+    flex-direction: row;
+    left:65px;
+    transition: left .75s;
+}
+
+.reaction
+{
+    width: calc(100%);
+    box-sizing: border-box;
+    padding: 0px 130px 0px 0px;
+    flex-shrink: 0; /*SECRET SAUCE*/
+}
+
+
+.reaction>h5{margin : 20px 0px 10px 0px;}
+.reaction>p
+{
+    color : #5c666a;
+    line-height:1.5;
+    margin-top:10px;
+}
+            
+/*----------------FOOTER---------------------*/
+
+
+
+#dummycarousel
+{
+    align-self:center;
+    font-size:100px;
+}
+
+#dummycontainer
+{
+    box-sizing: border-box;
+    width : 100%;
+    overflow:hidden auto;
+}
+
+#dummycontent 
+{
+    height : 150vh;
+}
