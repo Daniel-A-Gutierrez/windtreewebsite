@@ -1,3 +1,6 @@
+/**NOTE : ASSIGNING TO INNERHTML IS A SECURITY RISK. 
+ * REPLACE THIS IMPLEMENTATION WITH A SHADOW DOM ONE.
+ */
 class Navbar extends HTMLElement
 {
     constructor()
@@ -63,11 +66,9 @@ class Navbar extends HTMLElement
                 <a class="navbar-link"href="index.html">HOME</a>
                 <a class="navbar-link"href="about.html">ABOUT</a>
                 <a class="navbar-link"href="">EDUCATORS</a>
-                <a class="navbar-link dropdown"href="">PROGRAMS</a>
-                <a class="navbar-link dropdown"href="">SCHOOLS</a>
-                <a class="navbar-link"href="">COMPETITION</a>
+                <a class="navbar-link"href="programs.html">PROGRAMS</a>
+                <a class="navbar-link"href="">SCHOOLS</a>
                 <a class="navbar-link"href="careers.html">CAREERS</a>
-                <a class="navbar-link"href="">SPONSORSHIP</a>
                 <a class="navbar-link"href="contact.html">CONTACT US</a>
             </ul>
         </nav>

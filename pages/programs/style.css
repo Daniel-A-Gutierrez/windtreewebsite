@@ -1,0 +1,104 @@
+/*
+todo : 
+get font awesome in here for drop down icons
+get poppins font in
+get image sliders working
+get testimonial slider working.
+*/
+
+/*@import url('fonts/fontello/css/fontello.css');*/
+
+
+
+/*
+todo : 
+get font awesome in here for drop down icons
+get poppins font in
+get image sliders working
+get testimonial slider working.
+*/
+
+/*@import url('fonts/fontello/css/fontello.css');*/
+
+
+/*----------------BODY---------------------*/  
+
+.main-content-container
+{
+    display:flex;
+    justify-content:center;
+    min-height: calc(100vh - 105px);
+}
+
+.main-content
+{
+    margin-top:calc(86px + 43px);
+    margin-bottom: 86px;
+    width:75%;
+    align-items: left;
+    display:flex;
+    flex-direction: column;
+}
+.title
+{
+    text-align: center;
+    padding-bottom:10px;
+}
+
+.divider
+{
+    border:black 1px solid;
+    margin:33px;
+    width:50%;
+    align-self:center;
+}
+
+h1
+{
+    font-size: 50px;
+    color: #4d4d4d;
+    border-bottom:#4d4d4d 2px solid;
+}
+
+
+
+
+.program-card
+{
+    display:flex;
+    justify-content: space-between;
+    height:200px;
+    box-sizing: border-box;
+    padding: 10px 0px;
+}
+
+.program-card-text
+{
+    max-width:80%;
+}
+
+.program-card-image-container
+{
+    align-self:stretch;
+    width:200px;
+}
+.program-card-image
+{
+    max-height:100%;
+    
+    border-radius:4px;
+}
+
+
+
+h2 
+{  
+    color: #4d4d4d;
+    font-size:30px;
+    margin: 10px 0px 0px 0px;
+}
+p
+{
+    color:#101010;
+    line-height: 1.8;
+}
