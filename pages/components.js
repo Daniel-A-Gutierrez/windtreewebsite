@@ -65,9 +65,9 @@ class Navbar extends HTMLElement
             <ul class="navbar-link-list">
                 <a class="navbar-link"href="index.html">HOME</a>
                 <a class="navbar-link"href="about.html">ABOUT</a>
-                <a class="navbar-link"href="">EDUCATORS</a>
+                <!--<a class="navbar-link"href="">STANDARDS</a>-->
                 <a class="navbar-link"href="programs.html">PROGRAMS</a>
-                <a class="navbar-link"href="">SCHOOLS</a>
+                <a class="navbar-link"href="sign-up.html">SIGN UP</a>
                 <a class="navbar-link"href="careers.html">CAREERS</a>
                 <a class="navbar-link"href="contact.html">CONTACT US</a>
             </ul>
@@ -92,6 +92,12 @@ class Footer extends HTMLElement
             text-justify: center;
             box-sizing: border-box;
             padding:40px;
+        }
+        footer-bar
+        {
+            position:absolute;
+            width:100%;
+            bottom:0;
         }
         </style>
         <footer>© WINDTREE EDUCATION (Los Angeles, California, USA) All Rights Reserved </footer>

@@ -1,18 +1,7 @@
-/*
-todo : 
-get font awesome in here for drop down icons
-get poppins font in
-get image sliders working
-get testimonial slider working.
-*/
-
-/*@import url('fonts/fontello/css/fontello.css');*/
-
-
-/*----------------NAVBAR---------------------*/
-
-/*----------------BANNER---------------------*/
-/*do these next*/
+body
+{
+    padding-top:0px !important;
+}
 .banner
 {
     background-image:url("images/Robotics-Camp-0031-compressed.jpg");
@@ -21,7 +10,7 @@ get testimonial slider working.
     background-attachment: fixed;
     width:100%;
     padding-top:86px;
-    height:775px;
+    height:800px;
     color:white;
     display:flex;
     flex-direction: column;

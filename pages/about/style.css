@@ -92,12 +92,11 @@ body{
 
 .main-content
 {
-    margin-top:calc(86px + 43px);
-    margin-bottom: 86px;
     width:55%;
     align-items: left;
     display:flex;
     flex-direction: column;
+    margin-bottom:186px;
 }
 .title
 {

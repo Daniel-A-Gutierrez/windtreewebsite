@@ -18,4 +18,8 @@ body{
     margin:0;
     font-family:'Poppins',sans-serif;
     min-height:100vh;
+    position:relative;
+    padding-top:calc(86px + 43px);
+    padding-bottom: 86px;
+    box-sizing: border-box;
 }
