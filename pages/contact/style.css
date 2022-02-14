@@ -126,6 +126,7 @@ input, textarea
     align-items:center;
     align-self:flex-start;
     user-select: none;
+    width:unset;
 }
 
 .divbtn:hover
