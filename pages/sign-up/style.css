@@ -91,8 +91,19 @@ input , textarea
     font-family:'Poppins';
 }
 
+select
+{
+    display:block;
+    border: #333 1px solid;
+    padding: 8px 5px 8px 15px;
+    background-color:#eee;
+    margin:35px;
+    font-size:18px;
+    font-family:'Poppins';
+}
 
-.name-input
+
+.school-select
 {
     width:33%;
     margin-left:auto;

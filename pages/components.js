@@ -106,4 +106,4 @@ class Footer extends HTMLElement
 }
 
 window.customElements.define("nav-bar",Navbar);
-window-customElements.define("footer-bar", Footer);
+window.customElements.define("footer-bar", Footer);

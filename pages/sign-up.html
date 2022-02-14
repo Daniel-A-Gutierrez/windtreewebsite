@@ -22,14 +22,28 @@
         <h1 class="title">Sign Up</h1>
         <br>
         <div class="main-content">
-            <form class='application'>
-                <h2>Enter your school's sign up code</h2>
+            <div class='application' id="application">
+                <h2>Select your school</h2>
                 <p></p>
-                <input type="text" class="name-input">
-                <div class="divbtn"><a href=''>Submit</a></div>
+                <select class="school-select">
+                    <option value="default" selected>Select a school</option>
+                    <option value="School 1">School 1</option>
+                    <option value="School 2">School 2</option>
+                </select>
+                <!--<div class="divbtn"><a href=''>Submit</a></div>-->
+            </div>
+            <form hidden id="School 1 Form">
+                <label>
+                    <input>
+                </label>
+            </form>
+            <form hidden id="School 2 Form">
+                <label>
+                    <input>
+                </label>
             </form>
         </div>
-        
+
     </div>
     <footer-bar></footer-bar>
 </body>
