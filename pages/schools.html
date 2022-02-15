@@ -10,37 +10,41 @@
     <!--<link rel="preload" href="fonts/fontello/font/fontello.ttf" as="font" type="font/ttf" crossorigin>
     <link rel='stylesheet', href='/fonts/fontello/css/fontello.css'>-->
     <link rel='stylesheet', href='site-style.css'>
-    <link rel='stylesheet', href='sign-up/style.css'>
+    <link rel='stylesheet', href='schools/style.css'>
     <script defer src='components.js'></script>
-    <script defer src="sign-up/main.js"></script>
-    <title>Sign Up</title>
+    <script defer src="schools/main.js"></script>
+    <title>Schools</title>
 </head>
 <body>
     <nav-bar></nav-bar>
     <div class="main-content-container">
         <br>
-        <h1 class="title">Sign Up</h1>
+        <h1 class="title">Register</h1>
         <br>
         <div class="main-content">
-            <div class='application' id="application">
+            <form id="Registration Form" data-netlify="true" class="application" name="registration">
                 <h2>Select your school</h2>
                 <p></p>
-                <select class="school-select">
+                <select class="school-select" id="school-select" form="registration" name="school">
                     <option value="default" selected>Select a school</option>
                     <option value="School 1">School 1</option>
                     <option value="School 2">School 2</option>
                 </select>
                 <!--<div class="divbtn"><a href=''>Submit</a></div>-->
-            </div>
-            <form hidden id="School 1 Form">
-                <label>
-                    <input>
-                </label>
-            </form>
-            <form hidden id="School 2 Form">
-                <label>
-                    <input>
-                </label>
+                <div hidden id='form-hidden-content'>
+                    <div class="input-group">
+                        <div class="label-heading">Student Name</div>
+                        <label class="label-subtext">
+                            <input type="text" class="text-input" name="student first name" id="student-first-name">
+                            first name
+                        </label>
+                        <label class="label-subtext">
+                            <input type="text" class="text-input" name="student first name" id="student-first-name">
+                            last name
+                        </label>
+                    </div>
+                    <input type="submit" class="divbtn" value="Submit">
+                </div>
             </form>
         </div>
 

@@ -67,7 +67,7 @@ class Navbar extends HTMLElement
                 <a class="navbar-link"href="about">ABOUT</a>
                 <!--<a class="navbar-link"href="">STANDARDS</a>-->
                 <a class="navbar-link"href="programs">PROGRAMS</a>
-                <a class="navbar-link"href="sign-up">SIGN UP</a>
+                <a class="navbar-link"href="schools">SCHOOLS</a>
                 <a class="navbar-link"href="careers">CAREERS</a>
                 <a class="navbar-link"href="contact">CONTACT US</a>
             </ul>
