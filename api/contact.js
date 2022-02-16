@@ -2,14 +2,14 @@ require('dotenv').config()
 const { GoogleSpreadsheet } = require('google-spreadsheet')
 exports.handler = async (event,context) => 
 {
-    const GOOGLE_SPREADSHEET_ID = process.env.CONTACT_SHEET_ID;
+    const GOOGLE_SPREADSHEET_ID = process.env.ENV_CONTACT_SHEET_ID;
     const doc = new GoogleSpreadsheet(GOOGLE_SPREADSHEET_ID)
     try 
     {
         await doc.useServiceAccountAuth(
         {
-            client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-            private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n')
+            client_email: process.env.ENV_GOOGLE_SERVICE_ACCOUNT_EMAIL,
+            private_key: process.env.ENV_GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n')
         });
         await doc.loadInfo();
 
