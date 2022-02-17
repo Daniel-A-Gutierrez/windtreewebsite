@@ -32,11 +32,11 @@ exports.handler = async (event,context) =>
         let request= new XMLHttpRequest();
         const data = decode(event.body);
         let vals = Object.values(data);
-        request.open("POST",new URL(`https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREADSHEET_ID}/values/Sheet1:append`));
+        request.open("POST",new URL(`https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREADSHEET_ID}/values/Sheet1:append`), false);
         vals = {"range" : "Sheet1",
             "majorDimension":"ROWS",
             "values": vals}
-        request.send();
+        request.send(vals);
         console.log(request);
         request.onload = (event)=>console.log(event);
         //console.log({"doc":doc, "sheet":sheet});
