@@ -1,5 +1,17 @@
 require('dotenv').config()
 const { GoogleSpreadsheet } = require('google-spreadsheet')
+
+function decode(s, q) {
+    var i, p;
+    s = s.replace(/\+/g, ' ').replace(/;/g, '&').split('&');
+    q = q || {};
+    for (i=0; i<s.length; i++) {
+      p = s[i].split('=', 2);
+      q[unescape(p[0])] = unescape(p[1]);
+    }
+    return q;
+}
+
 exports.handler = async (event,context) => 
 {
     const GOOGLE_SPREADSHEET_ID = process.env.ENV_CONTACT_SHEET_ID;
@@ -14,17 +26,17 @@ exports.handler = async (event,context) =>
         await doc.loadInfo();
 
         const sheet = doc.sheetsByIndex[0];
-        console.log({"doc":doc, "sheet":sheet});
-        console.log(event);
-        console.log(decodeURI(event.body));
-        const data = decodeURI(event.body);
+        //console.log({"doc":doc, "sheet":sheet});
+        //console.log(event);
+        //console.log(decodeURI(event.body));
+        const data = decode(event.body);
         //const data = JSON.parse(event.body);//not working because its url encoded not json!
         const rows = await sheet.getRows();
         let response;
         response = 
         {
             statusCode: 200,
-            body: 'Thank you, your subscription has been completed!'
+            body: JSON.stringify(data)
         };
         return response
     } 
