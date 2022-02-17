@@ -15,7 +15,7 @@ function decode(s, q) {
 exports.handler = async (event,context) => 
 {
     const GOOGLE_SPREADSHEET_ID = process.env.ENV_CONTACT_SHEET_ID;
-    const doc = new GoogleSpreadsheet(GOOGLE_SPREADSHEET_ID)
+    const doc = new GoogleSpreadsheet(GOOGLE_SPREADSHEET_ID);
     try 
     {
         await doc.useServiceAccountAuth(
@@ -25,12 +25,24 @@ exports.handler = async (event,context) =>
         });
         await doc.loadInfo();
 
-        const sheet = doc.sheetsByIndex[0];
+        //const sheet = doc.sheetsByIndex[0];
+
+        //now to try appending a row
+        let request= new XMLHttpRequest();
+        const data = decode(event.body);
+        let vals = Object.values(data);
+        request.open("POST",URL(`https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREADSHEET_ID}/values/Sheet1:append`));
+        vals = {"range" : "Sheet1",
+            "majorDimension":"ROWS",
+            "values": vals}
+        request.send();
         //console.log({"doc":doc, "sheet":sheet});
         //console.log(event);
         //console.log(decodeURI(event.body));
-        const data = decode(event.body);
         //const data = JSON.parse(event.body);//not working because its url encoded not json!
+
+
+
         const rows = await sheet.getRows();
         let response;
         response = 
