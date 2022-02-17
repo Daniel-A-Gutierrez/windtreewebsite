@@ -15,6 +15,7 @@ exports.handler = async (event,context) =>
 
         const sheet = doc.sheetsByIndex[0];
         console.log({"doc":doc, "sheet":sheet});
+        console.log(event);
         const data = JSON.parse(event.body);
         const rows = await sheet.getRows();
         let response;
