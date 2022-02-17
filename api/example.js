@@ -5,6 +5,7 @@ exports.handler = async (event,context) =>
 {
     try
     {
+        //authenticate
         const GOOGLE_SPREADSHEET_ID = process.env.ENV_CONTACT_SHEET_ID;
 
         const serviceAccountAuth = new google.auth.JWT({
@@ -12,8 +13,8 @@ exports.handler = async (event,context) =>
             key: process.env.ENV_GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
             scopes: 'https://www.googleapis.com/auth/spreadsheets'
           });
-        console.log(serviceAccountAuth);
-        //const client = await serviceAccountAuth.getClient();
+
+        //read metadata
         const googleSheets = google.sheets(
         {
             version:"v4",
@@ -24,12 +25,21 @@ exports.handler = async (event,context) =>
             auth:serviceAccountAuth,
             spreadsheetId : GOOGLE_SPREADSHEET_ID
         });
-        console.log(sheetmetadata);
+        console.log(JSON.stringify(sheetmetadata));
           
+        //read data
+        const getRows = await googleSheets.spreadsheets.values.get(
+        {
+            auth:serviceAccountAuth,
+            spreadsheetId:GOOGLE_SPREADSHEET_ID,
+            range:"Sheet1"
+        });
+
+
         let response = 
         {
             statusCode: 200,
-            body: JSON.stringify(sheetmetadata)
+            body: JSON.stringify(getRows.data)
         };
         return response;
     }
