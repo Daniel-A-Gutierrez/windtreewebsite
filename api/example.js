@@ -23,12 +23,13 @@ exports.handler = async (event,context) =>
         {
             auth:serviceAccountAuth,
             spreadsheetId : GOOGLE_SPREADSHEET_ID
-        })
+        });
+        console.log(sheetmetadata);
           
         let response = 
         {
             statusCode: 200,
-            body: encodeURI(sheetmetadata)
+            body: encodeURI(json.stringify(sheetmetadata))
         };
         return response;
     }
