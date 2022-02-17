@@ -39,5 +39,6 @@ exports.handler = async (event,context) =>
             statusCode: 500,
             body: err
         };
+        return response;
     }
 }
