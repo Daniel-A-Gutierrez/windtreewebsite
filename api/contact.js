@@ -38,7 +38,7 @@ exports.handler = async (event,context) =>
             "values": vals}
         request.send();
         console.log(request);
-        request.onload((event)=>console.log(event));
+        request.onload = (event)=>console.log(event);
         //console.log({"doc":doc, "sheet":sheet});
         //console.log(event);
         //console.log(decodeURI(event.body));
