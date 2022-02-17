@@ -12,7 +12,7 @@ exports.handler = async (event,context) =>
             key: process.env.ENV_GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
             scopes: 'https://www.googleapis.com/auth/spreadsheets'
           });
-
+        console.log(serviceAccountAuth);
         const client = await serviceAccountAuth.getClient();
         const googleSheets = google.sheets(
         {
