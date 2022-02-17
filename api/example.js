@@ -28,7 +28,7 @@ exports.handler = async (event,context) =>
         let response = 
         {
             statusCode: 200,
-            body: sheetmetadata
+            body: encodeURI(sheetmetadata)
         };
         return response;
     }
