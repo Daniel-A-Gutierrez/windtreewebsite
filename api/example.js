@@ -13,11 +13,11 @@ exports.handler = async (event,context) =>
             scopes: 'https://www.googleapis.com/auth/spreadsheets'
           });
         console.log(serviceAccountAuth);
-        const client = await serviceAccountAuth.getClient();
+        //const client = await serviceAccountAuth.getClient();
         const googleSheets = google.sheets(
         {
             version:"v4",
-            auth:"client"
+            auth:serviceAccountAuth
         });
         const sheetmetadata = await googleSheets.spreadsheets.get(
         {
