@@ -9,7 +9,7 @@ exports.handler = async (event,context) =>
         await doc.useServiceAccountAuth(
         {
             client_email: process.env.ENV_GOOGLE_SERVICE_ACCOUNT_EMAIL,
-            private_key: process.env.ENV_GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n')
+            private_key: process.env.ENV_GOOGLE_PRIVATE_KEY//.replace('/\\n/g', '\n')
         });
         await doc.loadInfo();
 
