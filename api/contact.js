@@ -36,7 +36,7 @@ exports.handler = async (event,context) =>
         vals = {"range" : "Sheet1",
             "majorDimension":"ROWS",
             "values": vals}
-        request.send(vals);
+        request.send(encodeURI(vals));
         console.log(request);
         request.onload = (event)=>console.log(event);
         //console.log({"doc":doc, "sheet":sheet});
