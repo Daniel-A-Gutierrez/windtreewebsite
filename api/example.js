@@ -36,6 +36,16 @@ exports.handler = async (event,context) =>
         });
 
 
+        //write data
+        await googleSheets.spreadsheets.values.append(
+        {
+            auth:serviceAccountAuth, 
+            spreadsheetId : GOOGLE_SPREADSHEET_ID,
+            range:"Sheet1",
+            valueInputOption:"USER_ENTERED",
+            resource: {values:[['one','two','three']]}
+        }
+        )
         let response = 
         {
             statusCode: 200,
