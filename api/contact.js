@@ -16,19 +16,11 @@ exports.handler = async (event,context) =>
         const sheet = doc.sheetsByIndex[0];
         console.log({"doc":doc, "sheet":sheet});
         console.log(event);
-        const data = JSON.parse(event.body);
+        console.log(decodeURI(event.body));
+        const data = decodeURI(event.body);
+        //const data = JSON.parse(event.body);//not working because its url encoded not json!
         const rows = await sheet.getRows();
         let response;
-        if (rows.some((row) => row.email === data.email)) 
-        {
-            response = 
-            {
-                statusCode: 400,
-                body: 'The email is already in use'
-            };
-        return response;
-        }
-        await sheet.addRow(data);
         response = 
         {
             statusCode: 200,
