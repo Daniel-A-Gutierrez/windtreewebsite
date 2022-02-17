@@ -25,6 +25,12 @@ exports.handler = async (event,context) =>
             scopes: 'https://www.googleapis.com/auth/spreadsheets'
           });
 
+        const googleSheets = google.sheets(
+        {
+            version:"v4",
+            auth:serviceAccountAuth
+        });
+
         const data = decode(event.body);
         let vals = Object.values(data);
 
