@@ -1,6 +1,6 @@
 require('dotenv').config()
 const { GoogleSpreadsheet } = require('google-spreadsheet')
-XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 function decode(s, q) {
     var i, p;
@@ -32,7 +32,7 @@ exports.handler = async (event,context) =>
         let request= new XMLHttpRequest();
         const data = decode(event.body);
         let vals = Object.values(data);
-        request.open("POST",URL(`https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREADSHEET_ID}/values/Sheet1:append`));
+        request.open("POST",new URL(`https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREADSHEET_ID}/values/Sheet1:append`));
         vals = {"range" : "Sheet1",
             "majorDimension":"ROWS",
             "values": vals}
