@@ -14,9 +14,9 @@ exports.handler = async (event,context) =>
         await doc.loadInfo();
 
         const sheet = doc.sheetsByIndex[0];
+        console.log({"doc":doc, "sheet":sheet});
         const data = JSON.parse(event.body);
         const rows = await sheet.getRows();
-        console.log({"doc":doc, "sheet":sheet, "rows":rows});
         let response;
         if (rows.some((row) => row.email === data.email)) 
         {
