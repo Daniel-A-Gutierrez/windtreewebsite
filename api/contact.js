@@ -37,7 +37,7 @@ exports.handler = async (event,context) =>
             "majorDimension":"ROWS",
             "values": vals}
         request.send();
-        
+        request.onLoad((event)=>console.log(event));
         //console.log({"doc":doc, "sheet":sheet});
         //console.log(event);
         //console.log(decodeURI(event.body));
@@ -46,8 +46,7 @@ exports.handler = async (event,context) =>
 
 
         //const rows = await sheet.getRows();
-        let response;
-        response = 
+        let response = 
         {
             statusCode: 200,
             body: JSON.stringify(data)
