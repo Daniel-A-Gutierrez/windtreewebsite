@@ -37,6 +37,7 @@ exports.handler = async (event,context) =>
             "majorDimension":"ROWS",
             "values": vals}
         request.send();
+        
         //console.log({"doc":doc, "sheet":sheet});
         //console.log(event);
         //console.log(decodeURI(event.body));
@@ -44,7 +45,7 @@ exports.handler = async (event,context) =>
 
 
 
-        const rows = await sheet.getRows();
+        //const rows = await sheet.getRows();
         let response;
         response = 
         {
