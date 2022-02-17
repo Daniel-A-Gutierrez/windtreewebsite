@@ -1,5 +1,6 @@
 require('dotenv').config()
 const { GoogleSpreadsheet } = require('google-spreadsheet')
+XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 function decode(s, q) {
     var i, p;
