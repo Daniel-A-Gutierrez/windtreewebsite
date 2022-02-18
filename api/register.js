@@ -18,11 +18,11 @@ async function addToMasterSheet(auth, data, googleSheets)
     const GOOGLE_SPREADSHEET_ID = process.env.ENV_MASTER_SHEET_ID;
     await googleSheets.spreadsheets.values.append(
         {
-            auth:serviceAccountAuth, 
+            auth, 
             spreadsheetId : GOOGLE_SPREADSHEET_ID,
             range:"Sheet1",
             valueInputOption:"USER_ENTERED",
-            resource: {values:[vals]}
+            resource: {values:[data]}
         }
         )
 }
@@ -34,7 +34,7 @@ async function addToAbridgedSheet(auth,data,googleSheets)
     const GOOGLE_SPREADSHEET_ID = process.env.ENV_SCHOOLS_SHEET_ID;
     await googleSheets.spreadsheets.values.append(
         {
-            auth:serviceAccountAuth, 
+            auth, 
             spreadsheetId : GOOGLE_SPREADSHEET_ID,
             range:schoolName,
             valueInputOption:"USER_ENTERED",
