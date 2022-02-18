@@ -33,6 +33,8 @@ async function addToAbridgedSheet(auth,data,googleSheets)
     console.log("Schools : ");
     console.log(data.school);
     let row = [data.lastName];
+    console.log(data);
+    console.log(row);
     const GOOGLE_SPREADSHEET_ID = process.env.ENV_SCHOOLS_SHEET_ID;
     await googleSheets.spreadsheets.values.append(
         {
