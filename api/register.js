@@ -12,12 +12,42 @@ function decode(s, q) {
     return q;
 }
 
+
+async function addToMasterSheet(auth, data, googleSheets)
+{
+    const GOOGLE_SPREADSHEET_ID = process.env.ENV_MASTER_SHEET_ID;
+    await googleSheets.spreadsheets.values.append(
+        {
+            auth:serviceAccountAuth, 
+            spreadsheetId : GOOGLE_SPREADSHEET_ID,
+            range:"Sheet1",
+            valueInputOption:"USER_ENTERED",
+            resource: {values:[vals]}
+        }
+        )
+}
+
+async function addToAbridgedSheet(auth,data,googleSheets)
+{
+    const schoolName = data.schools;
+    let row = [data.lastName];
+    const GOOGLE_SPREADSHEET_ID = process.env.ENV_SCHOOLS_SHEET_ID;
+    await googleSheets.spreadsheets.values.append(
+        {
+            auth:serviceAccountAuth, 
+            spreadsheetId : GOOGLE_SPREADSHEET_ID,
+            range:schoolName,
+            valueInputOption:"USER_ENTERED",
+            resource: {values:[row]}
+        }
+        )
+}
+
 exports.handler = async (event,context) => 
 {
     try
     {
         //authenticate
-        const GOOGLE_SPREADSHEET_ID = process.env.ENV_CONTACT_SHEET_ID;
 
         const serviceAccountAuth = new google.auth.JWT({
             email: process.env.ENV_GOOGLE_SERVICE_ACCOUNT_EMAIL,
@@ -36,15 +66,10 @@ exports.handler = async (event,context) =>
 
 
         //write data
-        await googleSheets.spreadsheets.values.append(
-        {
-            auth:serviceAccountAuth, 
-            spreadsheetId : GOOGLE_SPREADSHEET_ID,
-            range:"Sheet1",
-            valueInputOption:"USER_ENTERED",
-            resource: {values:[vals]}
-        }
-        )
+        let master = addToMasterSheet(serviceAccountAuth,vals,googleSheets);
+        let schools = addToAbridgedSheet(serviceAccountAuth,data,googleSheets); //needs names to parse
+        await master;
+        await schools;
         let response = 
         {
             statusCode: 200,
