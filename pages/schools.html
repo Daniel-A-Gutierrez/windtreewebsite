@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' type='image/x-icon' href='images/faviconV2.png'>
+    <link rel="preload" href="fonts/Poppins-Medium.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="fonts/RobotoSlab-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <!--<link rel="preload" href="fonts/fontello/font/fontello.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel='stylesheet', href='/fonts/fontello/css/fontello.css'>-->
+    <link rel='stylesheet', href='site-style.css'>
+    <link rel='stylesheet', href='schools/style.css'>
+    <script defer src='components.js'></script>
+    <script defer src="schools/main.js"></script>
+    <title>Schools</title>
+</head>
+<body>
+    <nav-bar></nav-bar>
+    <div class="main-content-container">
+        <br>
+        <h1 class="title">Register</h1>
+        <br>
+        <div class="main-content">
+            <form id="registration" data-netlify="true" class="application" name="registration">
+                <h2>Select your school</h2>
+                <p></p>
+                <select class="school-select" id="school-select" form="registration" name="school">
+                    <option value="default" selected>Select a school</option>
+                    <option value="School 1">School 1</option>
+                    <option value="School 2">School 2</option>
+                </select>
+                <!--<div class="divbtn"><a href=''>Submit</a></div>-->
+                <div hidden id='form-hidden-content'>
+                    <div class="input-group">
+                        <div class="label-heading">Student Name</div>
+                        <label class="label-subtext">
+                            <input type="text" class="text-input" name="student first name" id="student-first-name">
+                            first name
+                        </label>
+                        <label class="label-subtext">
+                            <input type="text" class="text-input" name="student last name" id="student-last-name">
+                            last name
+                        </label>
+                    </div>
+                    <input type="submit" class="divbtn" value=" Submit ">
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <footer-bar></footer-bar>
+</body>
+</html>

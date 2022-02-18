@@ -63,13 +63,13 @@ class Navbar extends HTMLElement
         <nav id="navbar">
             <div class="navbar-icon"><image src='images/windtree-logo.png'></div>
             <ul class="navbar-link-list">
-                <a class="navbar-link"href="index.html">HOME</a>
-                <a class="navbar-link"href="about.html">ABOUT</a>
+                <a class="navbar-link"href="home">HOME</a>
+                <a class="navbar-link"href="about">ABOUT</a>
                 <!--<a class="navbar-link"href="">STANDARDS</a>-->
-                <a class="navbar-link"href="programs.html">PROGRAMS</a>
-                <a class="navbar-link"href="sign-up.html">SIGN UP</a>
-                <a class="navbar-link"href="careers.html">CAREERS</a>
-                <a class="navbar-link"href="contact.html">CONTACT US</a>
+                <a class="navbar-link"href="programs">PROGRAMS</a>
+                <a class="navbar-link"href="schools">SCHOOLS</a>
+                <a class="navbar-link"href="careers">CAREERS</a>
+                <a class="navbar-link"href="contact">CONTACT US</a>
             </ul>
         </nav>
         `;
@@ -106,4 +106,4 @@ class Footer extends HTMLElement
 }
 
 window.customElements.define("nav-bar",Navbar);
-window-customElements.define("footer-bar", Footer);
+window.customElements.define("footer-bar", Footer);

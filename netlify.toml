@@ -1,0 +1,3 @@
+[build]
+    publish="/pages"
+    functions="/api"

@@ -1,0 +1,205 @@
+/*
+todo : 
+get font awesome in here for drop down icons
+get poppins font in
+get image sliders working
+get testimonial slider working.
+*/
+
+/*@import url('fonts/fontello/css/fontello.css');*/
+
+
+/*@import url('fonts/fontello/css/fontello.css');*/
+
+
+
+
+/*----------------BODY---------------------*/  
+
+.main-content-container
+{
+    display:flex;
+    justify-content:center;
+    flex-direction: column;
+    align-items:center;
+}
+
+.main-content
+{
+    width:55%;
+    flex-direction:column;
+    text-align: center;
+}
+.title
+{
+    text-align: center;
+    padding-bottom:10px;
+}
+
+.divider
+{
+    border:black 1px solid;
+    margin:33px;
+    height: 300px;
+}
+
+h1
+{
+    font-size: 50px;
+    color: #4d4d4d;
+    border-bottom:#4d4d4d 2px solid;
+}
+
+h2 
+{  
+    color: #4d4d4d;
+    font-size:30px;
+}
+
+p
+{
+    color:#000;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.8;
+}
+
+
+/*FORM*/
+
+
+
+
+
+select
+{
+    display:block;
+    border: #333 1px solid;
+    padding: 8px 5px 8px 15px;
+    background-color:#eee;
+    margin:35px;
+    font-size:18px;
+    font-family:'Poppins';
+}
+
+
+.school-select
+{
+    width:33%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+label
+{
+    display:inline-block;
+}
+
+.input-group 
+{
+    display:block;
+    text-align:left;
+}
+
+.label-heading
+{
+    font-size:20px;
+    color:#333;
+}
+#form-hidden-content 
+{
+    padding-bottom:100px;
+}
+.label-subtext
+{
+    font-size:10px;
+    color:#888;
+    margin-right:15px;
+}
+.text-input
+{
+    display:block;
+    width:100%;
+    border: #333 1px solid;
+    height:27px;
+    padding: 8px 0px;
+    background-color:#eee;
+    resize: none;
+    margin:15px 0px 5px 0px;
+    font-size:18px;
+    font-family:'Poppins';
+    color:#333;
+}
+
+/*ADDRESS*/
+
+
+
+
+
+
+
+
+/*----------------DIVBTN---------------------*/
+.divbtn
+{
+    box-sizing:border-box;
+    display:inline-flex;
+    align-self:center;
+    padding: auto;
+    border:none;
+    background-color:#4a82b2;
+    box-shadow:0px 0px 5px 0px rgba(0,0,0,.5);
+    transition: all .3s ease-in-out;
+    color:white;
+    height:45px;
+    text-align: center;
+    user-select: none;
+    margin:10px;
+}
+
+.divbtn:hover
+{
+    background-color: #81c341;
+    box-shadow:0px 0px 5px 0px rgba(0,0,0,.5);
+}
+
+.divbtn 
+{
+    font-size:24px;
+    font-weight:bold;
+    color:white;
+    text-decoration: none;
+}
+
+
+
+
+/*----------------FOOTER---------------------*/
+
+footer
+{
+    background-color:#22253a;
+    border-top: rgba(255,255,255,.15) solid 1px;
+    color:slategrey;
+    text-align: center;
+    box-sizing: border-box;
+    padding:40px;
+}
+
+#dummycarousel
+{
+    align-self:center;
+    font-size:100px;
+}
+
+#dummycontainer
+{
+    box-sizing: border-box;
+    width : 100%;
+    overflow:hidden auto;
+}
+
+#dummycontent 
+{
+    height : 150vh;
+}
