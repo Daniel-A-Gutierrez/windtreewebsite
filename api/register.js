@@ -20,11 +20,11 @@ async function addToMasterSheet(auth, data, googleSheets)
         {
             auth, 
             spreadsheetId : GOOGLE_SPREADSHEET_ID,
-            range:"Sheet1",
+            range:"Master List",
             valueInputOption:"USER_ENTERED",
             resource: {values:[data]}
         }
-        )
+        );
 }
 
 async function addToAbridgedSheet(auth,data,googleSheets)
@@ -40,7 +40,7 @@ async function addToAbridgedSheet(auth,data,googleSheets)
             valueInputOption:"USER_ENTERED",
             resource: {values:[row]}
         }
-        )
+        );
 }
 
 exports.handler = async (event,context) => 
