@@ -32,7 +32,7 @@ async function addToAbridgedSheet(auth,data,googleSheets)
     const schoolName = data.school;
     console.log("Schools : ");
     console.log(data.school);
-    let row = [data.lastName];
+    let row = [data['student last name']];
     console.log(data);
     console.log(row);
     const GOOGLE_SPREADSHEET_ID = process.env.ENV_SCHOOLS_SHEET_ID;
