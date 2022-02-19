@@ -72,11 +72,11 @@ p
 
 select
 {
-    display:block;
     border: #333 1px solid;
     padding: 8px 5px 8px 15px;
     background-color:#eee;
-    margin:35px;
+    display:block;
+    margin:15px 0px 5px 0px;
     font-size:18px;
     font-family:'Poppins';
 }
@@ -84,7 +84,9 @@ select
 
 .school-select
 {
+    display:block;
     width:33%;
+    margin:35px;
     margin-left:auto;
     margin-right:auto;
 }
@@ -104,6 +106,7 @@ label
 {
     font-size:20px;
     color:#333;
+    margin:15px 0px;
 }
 #form-hidden-content 
 {
@@ -115,7 +118,7 @@ label
     color:#888;
     margin-right:15px;
 }
-.text-input
+.text-input 
 {
     display:block;
     width:100%;
@@ -130,10 +133,57 @@ label
     color:#333;
 }
 
+.date-input
+{
+    border: #333 1px solid;
+    height:27px;
+    padding: 8px 0px;
+    background-color:#eee;
+    resize: none;
+    margin:15px 0px 5px 0px;
+    font-size:18px;
+    font-family:'Poppins';
+    color:#333;
+    display:block;
+}
+
+.age-select
+{
+    max-height:400px;
+    
+}
+
+.checkbox-input
+{
+    width:2em;
+    height:2em;
+    position:relative;
+    right:2px;
+}
+
+.long
+{
+    display:block;
+}
+
+.short
+{
+    width:15%;
+}
+
 /*ADDRESS*/
 
 
+.class-row
+{
+    display:table;
+}
 
+.class-row>span
+{
+    display:table-cell;
+    vertical-align: middle;
+}
 
 
 

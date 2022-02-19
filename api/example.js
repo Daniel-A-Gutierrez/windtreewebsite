@@ -14,12 +14,13 @@ exports.handler = async (event,context) =>
             scopes: 'https://www.googleapis.com/auth/spreadsheets'
           });
 
-        //read metadata
+        
         const googleSheets = google.sheets(
         {
             version:"v4",
             auth:serviceAccountAuth
         });
+        //read metadata
         const sheetmetadata = await googleSheets.spreadsheets.get(
         {
             auth:serviceAccountAuth,

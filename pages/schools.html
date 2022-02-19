@@ -33,6 +33,7 @@
                 <!--<div class="divbtn"><a href=''>Submit</a></div>-->
                 <div hidden id='form-hidden-content'>
                     <div class="input-group">
+                        <h2>Student Information</h2>
                         <div class="label-heading">Student Name</div>
                         <label class="label-subtext">
                             <input type="text" class="text-input" name="student first name" id="student-first-name">
@@ -42,6 +43,100 @@
                             <input type="text" class="text-input" name="student last name" id="student-last-name">
                             last name
                         </label>
+                        <div class="label-heading">Date of Birth</div>
+                        <label class="label-subtext">
+                            <input type="date" class="date-input" name="student DOB" id="student-DOB">
+                            Date of Birth
+                        </label>
+                        <label class="label-subtext">
+                            <select class="age-select" name="student age" id="student-age"  form="registration">
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                            </select>
+                            Age
+                        </label>
+                        <div class="label-heading">Returning Student?</div>
+                        <label class="label-subtext">
+                            <input type="checkbox" class="checkbox-input" name="student returning" id="student-ret">
+                        </label>
+                        <h2>Contact Information</h2>
+                        <div class="label-heading">Parent or Guardian Name</div>
+                        <label class="label-subtext">
+                            <input type="text" class="text-input" name="parent first name" id="parent-first-name">
+                            first name
+                        </label>
+                        <label class="label-subtext">
+                            <input type="text" class="text-input" name="parent last name" id="parent-last-name">
+                            last name
+                        </label>
+                        <div class="label-heading">Contact</div>
+                        <label class="label-subtext">
+                            <input type="email" class="text-input" name="parent email" id="parent-email">
+                            email
+                        </label>
+                        <label class="label-subtext">
+                            <input type="tel" class="text-input" name="parent phone" id="parent-phone" minlength="7" maxlength="11" placeholder="1234567890">
+                            phone
+                        </label>
+                        <div class="label-heading">Relation To Student</div>
+                        <label class="label-subtext">
+                            <input type="text" class="text-input" name="parent relation" id="parent-relation">
+                            relation
+                        </label>
+                        <div class="label-heading">Address</div>
+                        <label class="long label-subtext">
+                            <input type="text" class="text-input" name="street address 1" id="st-address-1" placeholder="123 3rd Street">
+                            Street Address Line 1
+                        </label>
+                        <label class="long label-subtext">
+                            <input type="text" class="text-input" name="street address 2" id="st-address-2" placeholder="Apt. Number">
+                            Street Address Line 2
+                        </label>
+                        <label class="short label-subtext">
+                            <input type="text" class="text-input" name="city" id="city" placeholder="City">
+                            City
+                        </label>
+                        <label class="short label-subtext">
+                            <input type="text" class="text-input" name="state" id="state" placeholder="State">
+                            State
+                        </label>
+                        <label class="short label-subtext">
+                            <input type="text" class="text-input" name="zip" id="zip" placeholder="Zip Code">
+                            Zip Code
+                        </label>
+                        <label class="short label-subtext">
+                            <input type="text" class="text-input" name="country" id="country" placeholder="USA">
+                            Country
+                        </label>
+                        <h2>Health Information</h2>
+                        <div class="label-heading">Allergies</div>
+                        <label class="long label-subtext">
+                            <textarea class="text-input" name="allergies" id="allergies" placeholder="Peanuts" rows="2" style="height:unset"></textarea>
+                        </label>
+                        <div class="label-heading">Medical Conditions</div>
+                        <label class="long label-subtext">
+                            <textarea class="text-input" name="Conditions" id="Conditions" placeholder="Albinism" rows="2" style="height:unset"></textarea>
+                        </label>
+                        <h2>Enrollment</h2>
+                         <div class="class-list">
+                             <div class="class-row"><input type="checkbox" class="checkbox-input" value="class1"><span>class1</span></div>
+                             <div class="class-row"><input type="checkbox" class="checkbox-input" value="class2"><span>class1</span></div>
+                             <div class="class-row"><input type="checkbox" class="checkbox-input" value="class3"><span>class1</span></div>
+                             <div class="class-row"><input type="checkbox" class="checkbox-input" value="class4"><span>class1</span></div>
+                         </div>
                     </div>
                     <input type="submit" class="divbtn" value=" Submit ">
                 </div>

@@ -10,5 +10,5 @@ function revealHiddenForm(e)
         document.getElementById('form-hidden-content').setAttribute('hidden', "");
     }
 }
-
+document.getElementById('school-select').value='default';
 document.getElementById('school-select').addEventListener('change',revealHiddenForm);
