@@ -185,6 +185,11 @@ label
     vertical-align: middle;
 }
 
+small
+{
+    font-size : 10px;
+    color:#888;
+}
 
 
 
