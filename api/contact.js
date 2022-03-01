@@ -34,7 +34,7 @@ exports.handler = async (event,context) =>
         const data = decode(event.body);
         let vals = Object.values(data);
 
-
+        console.log(data);
         //write data
         await googleSheets.spreadsheets.values.append(
         {
@@ -48,7 +48,7 @@ exports.handler = async (event,context) =>
         let response = 
         {
             statusCode: 200,
-            body: JSON.stringify(getRows.data)
+            body: 'form submitted'//JSON.stringify(data)
         };
         return response;
     }

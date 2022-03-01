@@ -67,7 +67,7 @@ exports.handler = async (event,context) =>
 
         const data = decode(event.body);
         let vals = Object.values(data);
-
+        console.log(data);
 
         //write data
         let master = addToMasterSheet(serviceAccountAuth,vals,googleSheets);
