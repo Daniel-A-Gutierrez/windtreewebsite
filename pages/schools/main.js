@@ -22,7 +22,3 @@ function enableSubmit(args)
 {
     submit.removeAttribute('disabled');
 }
-human.addEventListener('change' , (event)=>
-{
-    submit.removeAttribute('disabled');
-} );

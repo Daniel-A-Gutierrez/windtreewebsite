@@ -2,7 +2,7 @@
 let human = document.querySelector('.g-recaptcha');
 let submit =  document.querySelector('#form-submit');
 submit.disabled = true;
-human.addEventListener('change' , (event)=>
+function enableSubmit(args)
 {
     submit.removeAttribute('disabled');
-} );
+}
