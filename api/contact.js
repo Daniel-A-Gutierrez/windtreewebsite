@@ -1,5 +1,6 @@
 const {google} = require("googleapis");
 const { auth } = require("googleapis/node_modules/google-auth-library");
+const fetch = require('node-fetch');
 
 function decode(s, q) {
     var i, p;
@@ -11,6 +12,16 @@ function decode(s, q) {
     }
     return q;
 }
+
+async function postData(url = '', data = {}) {
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: 'POST', 
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data) 
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
+  }
 
 exports.handler = async (event,context) => 
 {
@@ -30,34 +41,42 @@ exports.handler = async (event,context) =>
             version:"v4",
             auth:serviceAccountAuth
         });
-
+        //put form data into js object
         const data = decode(event.body);
         let vals = Object.values(data);
 
         console.log(data);
-        //write data
-        await googleSheets.spreadsheets.values.append(
+        //verify form response with capcha
+        const captcha_data = {secret:CAPTCHA_SECRET,response:data['g-recaptcha-response']};
+        let captcha_api_response = await postData('https://www.google.com/recaptcha/api/siteverify', captcha_data);
+
+        if(captcha_api_response && captcha_api_response.success)
         {
-            auth:serviceAccountAuth, 
-            spreadsheetId : GOOGLE_SPREADSHEET_ID,
-            range:"Sheet1",
-            valueInputOption:"USER_ENTERED",
-            resource: {values:[vals]}
+            //write data to sheets
+            await googleSheets.spreadsheets.values.append(
+            {
+                auth:serviceAccountAuth, 
+                spreadsheetId : GOOGLE_SPREADSHEET_ID,
+                range:"Sheet1",
+                valueInputOption:"USER_ENTERED",
+                resource: {values:[vals]}
+            })
+            //respond to client with success
+            let response = 
+            {
+                statusCode: 200,
+                body: 'form submitted'//JSON.stringify(data)
+            };
+            return response;
         }
-        )
-        let response = 
-        {
-            statusCode: 200,
-            body: 'form submitted'//JSON.stringify(data)
-        };
-        return response;
+        throw captcha_api_response;
     }
     catch(err)
     {
         let response = 
         {
             statusCode: 500,
-            body: encodeURI( err)
+            body: encodeURI(err)
         };
         return response;
     }
