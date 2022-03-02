@@ -17,6 +17,11 @@ document.getElementById('school-select').addEventListener('change',revealHiddenF
 let human = document.querySelector('.g-recaptcha');
 let submit =  document.querySelector('#form-submit');
 submit.disabled = true;
+
+function enableSubmit(args)
+{
+    submit.removeAttribute('disabled');
+}
 human.addEventListener('change' , (event)=>
 {
     submit.removeAttribute('disabled');
