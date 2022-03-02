@@ -4,5 +4,5 @@ let submit =  document.querySelector('#form-submit');
 submit.disabled = true;
 human.addEventListener('change' , (event)=>
 {
-    submit.disabled=false;
+    submit.removeAttribute('disabled');
 } );
