@@ -2,6 +2,7 @@ SCHOOLS
     js to sum up the cost of selected classes
     js to fetch the available classes and slots for the webpage when a school is selected 
     integrate paypal
+    add grade x
 
 BACKEND
     handle schools form submissions to split info into abridged sections on appropriate forms 
@@ -10,4 +11,4 @@ BACKEND
 
 
 contact
-    js to prevent submission when captcha isnt filled out using the recaptcha's onChange event 
+    js to prevent submission when captcha isnt filled out using the recaptcha's onChange event x

@@ -110,6 +110,11 @@ input, textarea
     flex:1
 }
 
+.g-recaptcha
+{
+    margin-bottom:40px;
+}
+
 /*----------------DIVBTN---------------------*/
 .divbtn
 {

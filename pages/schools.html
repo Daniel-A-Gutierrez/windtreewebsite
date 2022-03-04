@@ -44,31 +44,57 @@
                             <input type="text" class="text-input" name="student last name" id="student-last-name">
                             last name
                         </label>
-                        <div class="label-heading">Date of Birth</div>
-                        <label class="label-subtext">
-                            <input type="date" class="date-input" name="student DOB" id="student-DOB">
-                            Date of Birth
-                        </label>
-                        <label class="label-subtext">
-                            <select class="age-select" name="student age" id="student-age"  form="registration">
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                                <option value="13">13</option>
-                                <option value="14">14</option>
-                                <option value="15">15</option>
-                                <option value="16">16</option>
-                                <option value="17">17</option>
-                                <option value="18">18</option>
-                                <option value="19">19</option>
-                            </select>
-                            Age
-                        </label>
+                        <div class="form-line">
+                            <div class="form-inline-block">
+                                <div class="label-heading">Date of Birth</div>
+                                <label class="label-subtext">
+                                    <input type="date" class="date-input" name="student DOB" id="student-DOB">
+                                    Date of Birth
+                                </label>
+                                <label class="label-subtext">
+                                    <select class="age-select" name="student age" id="student-age"  form="registration">
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                    </select>
+                                    Age
+                                </label>
+                            </div>
+                            <div class="form-inline-block">
+                                <div class="label-heading">Grade</div>
+                                <label class="label-subtext">
+                                    <select class="age-select" name="student grade" id="student-grade"  form="registration">
+                                        <option value="default">Select Grade</option>
+                                        <option value="0">Kindergarten</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                    Grade
+                                </label>
+                            </div>
+                        </div>
                         <div class="label-heading">Returning Student?</div>
                         <label class="label-subtext">
                             <input type="checkbox" class="checkbox-input" name="student returning" id="student-ret">
@@ -133,12 +159,9 @@
                         </label>
                         <h2>Enrollment</h2>
                          <div class="class-list">
-                             <div class="class-row"><input type="checkbox" class="checkbox-input" value="class1"><span>Class1  <small>$100 USD</small></span></div>
-                             <div class="class-row"><input type="checkbox" class="checkbox-input" value="class2"><span>Class2  <small>$100 USD</small></span></div>
-                             <div class="class-row"><input type="checkbox" class="checkbox-input" value="class3"><span>Class3  <small>$100 USD</small></span></div>
-                             <div class="class-row"><input type="checkbox" class="checkbox-input" value="class4"><span>Class4  <small>$100 USD</small></span></div>
+                             Select A Grade To See Available Classes
                          </div>
-                         <div><br><span>Total : $0 USD</span></div>
+                         <div><br><span>Total : $<span id="price-tracker">0</span> USD</span></div>
                     </div>
                     <div class="g-recaptcha" data-sitekey="6LfZPqseAAAAAPMgXlFJZodmEpZTkTgizBTY73Jb" data-callback='enableSubmit'></div>
                     <input type="submit" id='form-submit' class="divbtn" value=" Submit ">

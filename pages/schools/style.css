@@ -191,7 +191,10 @@ small
     color:#888;
 }
 
-
+.g-recaptcha
+{
+    margin-bottom:40px;
+}
 
 
 /*----------------DIVBTN---------------------*/
@@ -228,7 +231,10 @@ small
     color:#333;
 }
 
-
+.form-inline-block
+{
+    display:inline-block;
+}
 
 
 /*----------------FOOTER---------------------*/
@@ -241,22 +247,4 @@ footer
     text-align: center;
     box-sizing: border-box;
     padding:40px;
-}
-
-#dummycarousel
-{
-    align-self:center;
-    font-size:100px;
-}
-
-#dummycontainer
-{
-    box-sizing: border-box;
-    width : 100%;
-    overflow:hidden auto;
-}
-
-#dummycontent 
-{
-    height : 150vh;
 }
