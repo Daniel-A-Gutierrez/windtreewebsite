@@ -1,3 +1,13 @@
+async function postData(url = '', data = {}) {
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: 'POST', 
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data) 
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
+  }
+
 //reveal form only after school is selected.  this needs to be updated to call populate class list 
 function revealHiddenForm(e)
 {
@@ -13,36 +23,28 @@ function revealHiddenForm(e)
     }
 }
 
-let classData;
-let classTotal = 0;
-let priceTracker = document.getElementById('price-tracker');
-
-//TODO - FETCH REAL CLASS DATA
-function fetchClassData()
+///.netlify/functions/getClasses should expect a school name, and respond as detailed.
+async function fetchClassData()
 {
-    classData = JSON.stringify( 
+    classData = await fetch("./netlify/getClasses", {className : schoolSelect.value});
+    /*classData = JSON.stringify( 
         [{
             className : 'innovative engineering',
             grades : [0,1,2],
             availability : 22,
             price : 100
         }]
-        );
+        );*/
+    //keep an eye out for the status of the response code.
+    console.log(classData);
     classData = JSON.parse(classData);
+    console.log(classData);
     classTotal = 0;
 }
-const schoolSelect = document.getElementById('school-select');
-schoolSelect.value='default';
-schoolSelect.addEventListener('change',revealHiddenForm);
-schoolSelect.addEventListener('change',fetchClassData);
-
-//document.querySelector('form').addEventListener( 'submit', (event) => event.preventDefault())
 
 //RECAPTCHA STUFF
 //make form submittable only after approved recaptcha 
-let human = document.querySelector('.g-recaptcha');
-let submit =  document.querySelector('#form-submit');
-submit.disabled = true;
+
 function enableSubmit(args)
 {
     submit.removeAttribute('disabled');
@@ -107,6 +109,17 @@ function generateClassList()
     classList.appendChild(frag);
 }
 
+let classData;
+let classTotal = 0;
+let priceTracker = document.getElementById('price-tracker');
+const schoolSelect = document.getElementById('school-select');
+schoolSelect.value='default';
+schoolSelect.addEventListener('change',revealHiddenForm);
+schoolSelect.addEventListener('change',fetchClassData);
+let human = document.querySelector('.g-recaptcha');
+let submit =  document.querySelector('#form-submit');
+submit.disabled = true;
 let gradeSelect = document.getElementById('student-grade');
 gradeSelect.value='default';
 gradeSelect.addEventListener('change', generateClassList);
+//document.querySelector('form').addEventListener( 'submit', (event) => event.preventDefault())
