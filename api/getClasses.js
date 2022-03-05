@@ -28,9 +28,8 @@ exports.handler = async (event,context) =>
         });
 
         //read data provided by client
-        console.log(event);
         let clientData = JSON.parse(event.body);
-        console.log(clientData);
+        console.log(`client data : ${clientData}`);
 
         //read data from google sheets (moonshot rn)
         const getRows = await googleSheets.spreadsheets.values.get(
@@ -41,12 +40,12 @@ exports.handler = async (event,context) =>
         });
         let rowData = getRows.data.values;
         let returnData = [];
-        console.log(rowData);
+        console.log(`row data : ${rowData}`);
         for(let i = 1 ; i < rowData; i++)
         {
             returnData.push(parseRow(rowData[i]));
         }
-        console.log(returnData);
+        console.log(`return data : ${returnData}`);
 
         /*[{
             className : 'innovative engineering',
