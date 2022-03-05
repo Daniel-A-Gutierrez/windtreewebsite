@@ -109,7 +109,12 @@ function generateClassList()
 }
 
 async function fetchAllClassData()
-{allClassData = await postData( "./.netlify/functions/getClasses", {className : schoolSelect.value});}
+{
+    allClassData = await postData( "./.netlify/functions/getClasses", {className : schoolSelect.value});
+    schoolSelect.addEventListener('change',fetchClassData);
+    schoolSelect.addEventListener('change',revealHiddenForm);
+    gradeSelect.addEventListener('change', generateClassList);
+}
 
 var allClassData=[];
 var classData = [];
@@ -120,10 +125,7 @@ var submit =  document.querySelector('#form-submit');
 var gradeSelect = document.getElementById('student-grade');
 const schoolSelect = document.getElementById('school-select');
 schoolSelect.value='default';
-schoolSelect.addEventListener('change',revealHiddenForm);
-schoolSelect.addEventListener('change',fetchClassData);
 submit.disabled = true;
 gradeSelect.value='default';
-gradeSelect.addEventListener('change', generateClassList);
 fetchAllClassData();
 //document.querySelector('form').addEventListener( 'submit', (event) => event.preventDefault())
