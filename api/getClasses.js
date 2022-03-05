@@ -44,6 +44,7 @@ exports.handler = async (event,context) =>
         {
             returnData.push(parseRow(rowData[i]));
         }
+        console.log(returnData);
 
         /*[{
             className : 'innovative engineering',
