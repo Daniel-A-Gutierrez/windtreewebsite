@@ -6,7 +6,7 @@ exports.handler = async (event,context) =>
     try
     {
         //authenticate
-        const GOOGLE_SPREADSHEET_ID = process.env.ENV_CONTACT_SHEET_ID;
+        const GOOGLE_SPREADSHEET_ID = process.env.ENV_SCHOOLS_SHEET_ID;
 
         const serviceAccountAuth = new google.auth.JWT({
             email: process.env.ENV_GOOGLE_SERVICE_ACCOUNT_EMAIL,
