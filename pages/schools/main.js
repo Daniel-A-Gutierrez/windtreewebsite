@@ -71,7 +71,7 @@ function generateClassList()
             <input type="checkbox" class="checkbox-input" value="class1">
             <span><span>Class1  <small>$100 USD</small></span></span>
         </div> */
-        if( (parseInt(Class.availability) > 0) && Class.grades.indexOf(studentGrade.toString)!==-1)
+        if( (parseInt(Class.availability) > 0) && Class.grades.indexOf(studentGrade.toString())!==-1)
         {
             let classrow = document.createElement('div');
             classrow.setAttribute('class','class-row');
