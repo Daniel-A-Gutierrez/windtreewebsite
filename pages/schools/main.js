@@ -109,17 +109,17 @@ function generateClassList()
     classList.appendChild(frag);
 }
 
-let classData;
-let classTotal = 0;
-let priceTracker = document.getElementById('price-tracker');
+var classData;
+var classTotal = 0;
+var priceTracker = document.getElementById('price-tracker');
 const schoolSelect = document.getElementById('school-select');
 schoolSelect.value='default';
 schoolSelect.addEventListener('change',revealHiddenForm);
 schoolSelect.addEventListener('change',fetchClassData);
-let human = document.querySelector('.g-recaptcha');
-let submit =  document.querySelector('#form-submit');
+var human = document.querySelector('.g-recaptcha');
+var submit =  document.querySelector('#form-submit');
 submit.disabled = true;
-let gradeSelect = document.getElementById('student-grade');
+var gradeSelect = document.getElementById('student-grade');
 gradeSelect.value='default';
 gradeSelect.addEventListener('change', generateClassList);
 //document.querySelector('form').addEventListener( 'submit', (event) => event.preventDefault())
