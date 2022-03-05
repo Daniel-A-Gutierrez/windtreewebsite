@@ -57,7 +57,7 @@ exports.handler = async (event,context) =>
         let response = 
         {
             statusCode: 500,
-            body: err
+            body: encodeURI(err)
         };
         return response;
     }
