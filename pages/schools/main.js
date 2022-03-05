@@ -16,6 +16,7 @@ function revealHiddenForm(e)
 let classData;
 let classTotal = 0;
 let priceTracker = document.getElementById('price-tracker');
+
 //TODO - FETCH REAL CLASS DATA
 function fetchClassData()
 {
@@ -30,8 +31,6 @@ function fetchClassData()
     classData = JSON.parse(classData);
     classTotal = 0;
 }
-
-
 const schoolSelect = document.getElementById('school-select');
 schoolSelect.value='default';
 schoolSelect.addEventListener('change',revealHiddenForm);
@@ -44,10 +43,14 @@ schoolSelect.addEventListener('change',fetchClassData);
 let human = document.querySelector('.g-recaptcha');
 let submit =  document.querySelector('#form-submit');
 submit.disabled = true;
-
 function enableSubmit(args)
 {
     submit.removeAttribute('disabled');
+}
+
+function disableSubmit(args)
+{
+    submit.setAttribute("disabled","");
 }
 
 //should filter selectable classes by grade and availability

@@ -6,3 +6,7 @@ function enableSubmit(args)
 {
     submit.removeAttribute('disabled');
 }
+function disableSubmit(args)
+{
+    submit.setAttribute('disabled',"");
+}
