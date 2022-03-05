@@ -3,7 +3,7 @@ const { auth } = require("googleapis/node_modules/google-auth-library");
 
 function parseRow(arr = [])
 {
-    let data = {className : arr[0], grades : arr[1], availibility : arr[2], price : arr[3]};
+    let data = {schoolName : arr[0], className : arr[1], availibility : arr[2], price : arr[3], grades: arr[4]};
     console.log(`returning object  : ${data}`)
     return data;
 }

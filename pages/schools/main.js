@@ -5,7 +5,6 @@ async function postData(url = '', data = {}) {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data) 
     });
-    console.log(response);
     return response.json(); // parses JSON response into native JavaScript objects
   }
 
@@ -36,8 +35,6 @@ async function fetchClassData()
         }]
         );*/
     //keep an eye out for the status of the response code.
-    console.log(classData);
-    classData = JSON.parse(classData);
     console.log(classData);
     classTotal = 0;
 }
