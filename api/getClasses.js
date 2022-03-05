@@ -42,7 +42,7 @@ exports.handler = async (event,context) =>
         console.log(rowData);
         for(let i = 1 ; i < rowData; i++)
         {
-            returnData.push(parseRow(rowData));
+            returnData.push(parseRow(rowData[i]));
         }
 
         /*[{
