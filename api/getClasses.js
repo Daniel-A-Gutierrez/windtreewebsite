@@ -1,6 +1,11 @@
 const {google} = require("googleapis");
 const { auth } = require("googleapis/node_modules/google-auth-library");
 
+function parseRow(arr = [])
+{
+    return {className : arr[0], grades : arr[1], availibility : arr[2], price : arr[3]};
+}
+
 exports.handler = async (event,context) => 
 {
     try
@@ -30,11 +35,22 @@ exports.handler = async (event,context) =>
         {
             auth:serviceAccountAuth,
             spreadsheetId:GOOGLE_SPREADSHEET_ID,
-            range:clientData.className
+            range:"Classes"
         });
+        let rowData = getRows.data.values;
+        let returnData = [];
+        console.log(rowData);
+        for(let i = 1 ; i < rowData; i++)
+        {
+            returnData.push(parseRow(rowData));
+        }
 
-        console.log(getRows);
-
+        /*[{
+            className : 'innovative engineering',
+            grades : [0,1,2],
+            availability : 22,
+            price : 100
+        }]*/
         //write data
         // await googleSheets.spreadsheets.values.append(
         // {
@@ -48,7 +64,7 @@ exports.handler = async (event,context) =>
         let response = 
         {
             statusCode: 200,
-            body: JSON.stringify(getRows.data)
+            body: JSON.stringify(rowData)
         };
         return response;
     }
