@@ -23,17 +23,19 @@ function revealHiddenForm(e)
 }
 
 ///.netlify/functions/getClasses should expect a school name, and respond as detailed.
-async function fetchClassData()
-{
-    classData = await postData( "./.netlify/functions/getClasses", {className : schoolSelect.value});
-    /*classData = JSON.stringify( 
+/*classData = JSON.stringify( 
         [{
+            schoolName : 'School A'
             className : 'innovative engineering',
             grades : [0,1,2],
             availability : 22,
             price : 100
         }]
         );*/
+async function fetchClassData()
+{
+    classData = allClassData.filter((Class) => Class.schoolName === schoolSelect.value);
+    
     //keep an eye out for the status of the response code.
     console.log(classData);
     classTotal = 0;
@@ -106,7 +108,10 @@ function generateClassList()
     classList.appendChild(frag);
 }
 
-var classData;
+async function fetchAllClassData()
+{allClassData = await postData( "./.netlify/functions/getClasses", {className : schoolSelect.value});}
+
+var classData = [];
 var classTotal = 0;
 var priceTracker = document.getElementById('price-tracker');
 const schoolSelect = document.getElementById('school-select');
@@ -119,4 +124,6 @@ submit.disabled = true;
 var gradeSelect = document.getElementById('student-grade');
 gradeSelect.value='default';
 gradeSelect.addEventListener('change', generateClassList);
+var allClassData;
+fetchAllClassData();
 //document.querySelector('form').addEventListener( 'submit', (event) => event.preventDefault())
