@@ -3,7 +3,9 @@ const { auth } = require("googleapis/node_modules/google-auth-library");
 
 function parseRow(arr = [])
 {
-    return {className : arr[0], grades : arr[1], availibility : arr[2], price : arr[3]};
+    let data = {className : arr[0], grades : arr[1], availibility : arr[2], price : arr[3]};
+    console.log(`returning object  : ${data}`)
+    return data;
 }
 
 exports.handler = async (event,context) => 
