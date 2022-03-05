@@ -41,7 +41,7 @@ exports.handler = async (event,context) =>
         let rowData = getRows.data.values;
         let returnData = [];
         console.log(`row data : ${rowData}`);
-        for(let i = 1 ; i < rowData; i++)
+        for(let i = 1 ; i < rowData.length; i++)
         {
             returnData.push(parseRow(rowData[i]));
         }
