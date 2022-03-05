@@ -21,6 +21,7 @@ exports.handler = async (event,context) =>
         });
 
         //read data provided by client
+        console.log(event);
         let clientData = JSON.parse(event.body);
         console.log(clientData);
 
@@ -56,7 +57,7 @@ exports.handler = async (event,context) =>
         let response = 
         {
             statusCode: 500,
-            body: encodeURI( err)
+            body: err
         };
         return response;
     }

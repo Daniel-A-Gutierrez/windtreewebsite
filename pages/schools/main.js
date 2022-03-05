@@ -5,13 +5,13 @@ async function postData(url = '', data = {}) {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data) 
     });
+    console.log(response);
     return response.json(); // parses JSON response into native JavaScript objects
   }
 
 //reveal form only after school is selected.  this needs to be updated to call populate class list 
 function revealHiddenForm(e)
 {
-    console.log(e);
     if(e.target.value !== "default")
     {
         document.getElementById('form-hidden-content').removeAttribute('hidden');
