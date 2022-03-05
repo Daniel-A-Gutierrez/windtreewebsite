@@ -26,7 +26,7 @@ function revealHiddenForm(e)
 ///.netlify/functions/getClasses should expect a school name, and respond as detailed.
 async function fetchClassData()
 {
-    classData = await postData( new URL("/.netlify/functions/getClasses"), {className : schoolSelect.value});
+    classData = await postData( "./.netlify/functions/getClasses", {className : schoolSelect.value});
     /*classData = JSON.stringify( 
         [{
             className : 'innovative engineering',
