@@ -64,7 +64,7 @@ exports.handler = async (event,context) =>
         let response = 
         {
             statusCode: 200,
-            body: JSON.stringify(rowData)
+            body: JSON.stringify(returnData)
         };
         return response;
     }
