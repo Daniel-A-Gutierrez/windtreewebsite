@@ -35,7 +35,7 @@ function revealHiddenForm(e)
 async function fetchClassData()
 {
     classData = allClassData.filter((Class) => Class.schoolName === schoolSelect.value);
-    
+    console.log(allClassData);
     //keep an eye out for the status of the response code.
     console.log(classData);
     classTotal = 0;
@@ -71,7 +71,7 @@ function generateClassList()
             <input type="checkbox" class="checkbox-input" value="class1">
             <span><span>Class1  <small>$100 USD</small></span></span>
         </div> */
-        if( (parseInt(Class.availability) > 0) && Class.grades.indexOf(studentGrade)!==-1)
+        if( (parseInt(Class.availability) > 0) && Class.grades.indexOf(studentGrade.toString)!==-1)
         {
             let classrow = document.createElement('div');
             classrow.setAttribute('class','class-row');
