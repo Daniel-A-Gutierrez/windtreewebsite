@@ -236,6 +236,11 @@ small
     display:inline-block;
 }
 
+#paypal
+{
+    max-width: 29%;
+    margin-top : 30px;
+}
 
 /*----------------FOOTER---------------------*/
 
