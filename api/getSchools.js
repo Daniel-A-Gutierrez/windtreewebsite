@@ -35,7 +35,7 @@ exports.handler = async (event,context) =>
             range:"Schools"
         });
         let rowData = getRows.data.values;
-        rowData.shift();
+        rowData.shift(); //cut off labels row
         rowData = rowData.flat();
         console.log(`return data : ${rowData}`);
 

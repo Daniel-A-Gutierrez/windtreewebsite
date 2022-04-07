@@ -90,8 +90,8 @@ function generateClassList(classData)
             let classrow = document.createElement('div');
             classrow.setAttribute('class','class-row');
             let checkbox = document.createElement('input');
-            checkbox.setAttribute('type','checkbox');
-            checkbox.setAttribute('class', 'checkbox-input');
+            checkbox.setAttribute('type', 'checkbox');
+            checkbox.setAttribute('class','checkbox-input');
             checkbox.setAttribute('value', Class.className);
             checkbox.addEventListener('change', (event) => 
             {
@@ -145,7 +145,7 @@ async function fetchAllClassData()
     */
     
     console.log(schoolData);
-    schoolSelect.addEventListener('change',fetchClassData);
+    schoolSelect.addEventListener('change', (event) => filterClassesBySchool(allClassData, event.target.value) );
     schoolSelect.addEventListener('change',revealHiddenForm);
     gradeSelect.addEventListener('change', generateClassList);
     schoolSelect.value = 'default';
@@ -163,7 +163,6 @@ var schoolSelect = document.getElementById("school-select");
 schoolSelect.value='default';
 submit.disabled = true;
 gradeSelect.value='default';
-schoolSelect.disabled = true;
 fetchAllClassData();
 
 //document.querySelector('form').addEventListener( 'submit', (event) => event.preventDefault()) 
