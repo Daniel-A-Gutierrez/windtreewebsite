@@ -63,7 +63,7 @@ function generateSchoolList(schools)
 }
 
 //should filter selectable classes by grade and availability
-function generateClassList(classData)
+function generateClassList()
 {
     //let classes =  fetch(./netlify/functions/classes)
     let classList = document.querySelector('.class-list');
@@ -147,7 +147,7 @@ async function fetchAllClassData()
     console.log(schoolData);
     schoolSelect.addEventListener('change', (event) => filterClassesBySchool(allClassData, event.target.value) );
     schoolSelect.addEventListener('change',revealHiddenForm);
-    gradeSelect.addEventListener('change', () => generateClassList(classData));
+    gradeSelect.addEventListener('change', generateClassList);
     schoolSelect.value = 'default';
     schoolSelect.disabled = false;
 }
