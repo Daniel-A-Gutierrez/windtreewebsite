@@ -74,7 +74,7 @@ function generateClassList(classData)
     let frag = new DocumentFragment();
 
     let classArray = []; //checking and unchecking boxes manages array which sets classSelection.value
-    let classSelection = Document.createElement("input");
+    let classSelection = document.createElement("input");
     classSelection.setAttribute('hidden', "");
     classSelection.setAttribute('name', 'class selection');
     classSelection.setAttribute('value',"");
