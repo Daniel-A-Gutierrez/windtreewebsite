@@ -77,6 +77,7 @@ function generateClassList()
     let classSelection = document.createElement("input");
     classSelection.setAttribute('hidden', "");
     classSelection.setAttribute('name', 'class selection');
+    classSelection.setAttribute('id', 'class-selection');
     classSelection.setAttribute('value',"");
     classData.forEach( Class =>
     {
@@ -154,13 +155,28 @@ async function fetchAllClassData()
 
 
 paypal.Buttons({
+    style:
+    {
+        layout: 'vertical',
+        color: 'blue',
+        label: 'paypal',
+        tagline: "false"
+    },
+
     // Sets up the transaction when a payment button is clicked
     createOrder: (data, actions) => {
       return actions.order.create({
-        purchase_units: [{
-          amount: {
-            value: classTotal.toString() // Can also reference a variable or function
-          }
+        purchase_units: 
+        [{
+            amount: 
+            {
+                value: classTotal.toString() // Can also reference a variable or function
+            },
+            items : 
+            [{
+                name: 'registration of ' + document.querySelector("#student-first-name").value + " " + document.querySelector("#student-last-name").value,
+                description : document.querySelector("#class-selection").value
+            }]
         }]
       });
     },
