@@ -1,7 +1,7 @@
 const {google} = require("googleapis");
 const { auth } = require("googleapis/node_modules/google-auth-library");
 
-function parseRow(arr = [])
+function parseSheet(arr = [])
 {
     let data = {schoolName : arr[0], className : arr[1], availability : arr[2], price : arr[3], grades: arr[4]};
     console.log(`returning object  : ${data}`)
@@ -27,25 +27,17 @@ exports.handler = async (event,context) =>
             auth:serviceAccountAuth
         });
 
-        // //read data provided by client
-        // let clientData = JSON.parse(event.body);
-        // console.log(`client data : ${clientData}`);
-
-        //read data from google sheets 
+        //read data from google sheets (moonshot rn)
         const getRows = await googleSheets.spreadsheets.values.get(
         {
             auth:serviceAccountAuth,
             spreadsheetId:GOOGLE_SPREADSHEET_ID,
-            range:"Classes"
+            range:"Schools"
         });
         let rowData = getRows.data.values;
-        let returnData = [];
-        console.log(`row data : ${rowData}`);
-        for(let i = 1 ; i < rowData.length; i++)
-        {
-            returnData.push(parseRow(rowData[i]));
-        }
-        console.log(`return data : ${returnData}`);
+        rowData.shift();
+        rowData = rowData.flat();
+        console.log(`return data : ${rowData}`);
 
         /*[{
             className : 'innovative engineering',
@@ -66,7 +58,7 @@ exports.handler = async (event,context) =>
         let response = 
         {
             statusCode: 200,
-            body: JSON.stringify(returnData)
+            body: JSON.stringify(rowData)
         };
         return response;
     }

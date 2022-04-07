@@ -8,7 +8,7 @@ async function postData(url = '', data = {}) {
     return response.json(); // parses JSON response into native JavaScript objects
   }
 
-//reveal form only after school is selected.  this needs to be updated to call populate class list 
+//reveal form only after school is selected.  
 function revealHiddenForm(e)
 {
     if(e.target.value !== "default")
@@ -32,13 +32,14 @@ function revealHiddenForm(e)
             price : 100
         }]
         );*/
-async function fetchClassData()
+async function filterClassesBySchool(allClassData, schoolName)
 {
-    classData = allClassData.filter((Class) => Class.schoolName === schoolSelect.value);
+    classData = allClassData.filter((Class) => Class.schoolName === schoolName);//schoolSelect.value);
     console.log(allClassData);
     //keep an eye out for the status of the response code.
     console.log(classData);
     classTotal = 0;
+    return classData;
 }
 
 //RECAPTCHA STUFF
@@ -54,8 +55,15 @@ function disableSubmit(args)
     submit.setAttribute("disabled","");
 }
 
+//
+function generateSchoolList(schools)
+{
+    let frag = new DocumentFragment();
+    //todo
+}
+
 //should filter selectable classes by grade and availability
-function generateClassList()
+function generateClassList(classData)
 {
     //let classes =  fetch(./netlify/functions/classes)
     let classList = document.querySelector('.class-list');
@@ -64,6 +72,12 @@ function generateClassList()
     priceTracker.innerText = classTotal;
     let studentGrade = parseInt(document.getElementById('student-grade').value);
     let frag = new DocumentFragment();
+
+    let classArray = []; //checking and unchecking boxes manages array which sets classSelection.value
+    let classSelection = Document.createElement("input");
+    classSelection.setAttribute('hidden', "");
+    classSelection.setAttribute('name', 'class selection');
+    classSelection.setAttribute('value',"");
     classData.forEach( Class =>
     {
         /*example class
@@ -85,6 +99,17 @@ function generateClassList()
                 change*= parseInt(Class.price);
                 classTotal += change;
                 priceTracker.innerText = classTotal;
+
+                //add it to class selection or remove it from class selection
+                if(change < 0)
+                {
+                    classArray = classArray.filter( (elem) => elem!==Class.className );
+                }
+                else 
+                {
+                    classArray.push(Class.className);
+                }
+                classSelection.setAttribute('value',classArray.toString());
             });
             let classTextWrapper = document.createElement('span');
             let classNameText = document.createElement('span');
@@ -96,6 +121,7 @@ function generateClassList()
             classTextWrapper.appendChild(classPriceText);
             classrow.appendChild(classTextWrapper);
             frag.appendChild(classrow);
+            frag.appendChild(classSelection);
         }
     });
     
@@ -111,9 +137,19 @@ function generateClassList()
 async function fetchAllClassData()
 {
     allClassData = await postData( "./.netlify/functions/getClasses", {className : schoolSelect.value});
+    schoolData = await(postData( "./.netlify/functions/getSchools") , {});
+    
+    /* //see if this works, itd save time. 
+    allClassData = await allClassData;
+    schoolData = await schoolData; 
+    */
+    
+    console.log(schoolData);
     schoolSelect.addEventListener('change',fetchClassData);
     schoolSelect.addEventListener('change',revealHiddenForm);
     gradeSelect.addEventListener('change', generateClassList);
+    schoolSelect.value = 'default';
+    schoolSelect.disabled = false;
 }
 
 var allClassData=[];
@@ -123,9 +159,11 @@ var priceTracker = document.getElementById('price-tracker');
 var human = document.querySelector('.g-recaptcha');
 var submit =  document.querySelector('#form-submit');
 var gradeSelect = document.getElementById('student-grade');
-const schoolSelect = document.getElementById('school-select');
+var schoolSelect = document.getElementById("school-select");
 schoolSelect.value='default';
 submit.disabled = true;
 gradeSelect.value='default';
+schoolSelect.disabled = true;
 fetchAllClassData();
-//document.querySelector('form').addEventListener( 'submit', (event) => event.preventDefault())
+
+//document.querySelector('form').addEventListener( 'submit', (event) => event.preventDefault()) 
