@@ -160,8 +160,8 @@ paypal.Buttons({
         layout: 'vertical',
         color: 'blue',
         label: 'paypal',
-        tagline: "false",
-        height: "30"
+        tagline: false,
+        height: 30
     },
 
     // Sets up the transaction when a payment button is clicked
