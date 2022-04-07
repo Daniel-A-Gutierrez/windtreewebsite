@@ -17,6 +17,7 @@
     <title>Schools</title>
 </head>
 <body>
+    <script src="https://www.paypal.com/sdk/js?client-id=AWK7vezW70tIptxSuRCDFJr9-VHeHeM0RufSmQbJD32Xrinjcut82CyMhawgteRfG-V8xEHVYe72XoSt&currency=USD"></script>
     <nav-bar></nav-bar>
     <div class="main-content-container">
         <br>
@@ -41,18 +42,18 @@
                             first name
                         </label>
                         <label class="label-subtext">
-                            <input type="text" class="text-input" name="student last name" id="student-last-name">
+                            <input type="text" class="text-input" name="student last name" id="student-last-name" required>
                             last name
                         </label>
                         <div class="form-line">
                             <div class="form-inline-block">
                                 <div class="label-heading">Date of Birth</div>
                                 <label class="label-subtext">
-                                    <input type="date" class="date-input" name="student DOB" id="student-DOB">
+                                    <input type="date" class="date-input" name="student DOB" id="student-DOB" required>
                                     Date of Birth
                                 </label>
                                 <label class="label-subtext">
-                                    <select class="age-select" name="student age" id="student-age"  form="registration">
+                                    <select class="age-select" name="student age" id="student-age"  form="registration" required>
                                         <option value="5">5</option>
                                         <option value="6">6</option>
                                         <option value="7">7</option>
@@ -97,55 +98,55 @@
                         </div>
                         <div class="label-heading">Returning Student?</div>
                         <label class="label-subtext">
-                            <input type="checkbox" class="checkbox-input" name="student returning" id="student-ret">
+                            <input type="checkbox" class="checkbox-input" name="student returning" id="student-ret" required>
                         </label>
                         <h2>Contact Information</h2>
                         <div class="label-heading">Parent or Guardian Name</div>
                         <label class="label-subtext">
-                            <input type="text" class="text-input" name="parent first name" id="parent-first-name">
+                            <input type="text" class="text-input" name="parent first name" id="parent-first-name" required>
                             first name
                         </label>
                         <label class="label-subtext">
-                            <input type="text" class="text-input" name="parent last name" id="parent-last-name">
+                            <input type="text" class="text-input" name="parent last name" id="parent-last-name" required>
                             last name
                         </label>
                         <div class="label-heading">Contact</div>
                         <label class="label-subtext">
-                            <input type="email" class="text-input" name="parent email" id="parent-email">
+                            <input type="email" class="text-input" name="parent email" id="parent-email" required>
                             email
                         </label>
                         <label class="label-subtext">
-                            <input type="tel" class="text-input" name="parent phone" id="parent-phone" minlength="7" maxlength="11" placeholder="1234567890">
+                            <input type="tel" class="text-input" name="parent phone" id="parent-phone" minlength="7" maxlength="11" placeholder="1234567890" required>
                             phone
                         </label>
                         <div class="label-heading">Relation To Student</div>
                         <label class="label-subtext">
-                            <input type="text" class="text-input" name="parent relation" id="parent-relation">
+                            <input type="text" class="text-input" name="parent relation" id="parent-relation" required>
                             relation
                         </label>
                         <div class="label-heading">Address</div>
                         <label class="long label-subtext">
-                            <input type="text" class="text-input" name="street address 1" id="st-address-1" placeholder="123 3rd Street">
+                            <input type="text" class="text-input" name="street address 1" id="st-address-1" placeholder="123 3rd Street" required>
                             Street Address Line 1
                         </label>
                         <label class="long label-subtext">
-                            <input type="text" class="text-input" name="street address 2" id="st-address-2" placeholder="Apt. Number">
+                            <input type="text" class="text-input" name="street address 2" id="st-address-2" placeholder="Apt. Number" required>
                             Street Address Line 2
                         </label>
                         <label class="short label-subtext">
-                            <input type="text" class="text-input" name="city" id="city" placeholder="City">
+                            <input type="text" class="text-input" name="city" id="city" placeholder="City" required>
                             City
                         </label>
                         <label class="short label-subtext">
-                            <input type="text" class="text-input" name="state" id="state" placeholder="State">
+                            <input type="text" class="text-input" name="state" id="state" placeholder="State" required>
                             State
                         </label>
                         <label class="short label-subtext">
-                            <input type="text" class="text-input" name="zip" id="zip" placeholder="Zip Code">
+                            <input type="text" class="text-input" name="zip" id="zip" placeholder="Zip Code" required>
                             Zip Code
                         </label>
                         <label class="short label-subtext">
-                            <input type="text" class="text-input" name="country" id="country" placeholder="USA">
+                            <input type="text" class="text-input" name="country" id="country" placeholder="USA" required>
                             Country
                         </label>
                         <h2>Health Information</h2>
@@ -166,6 +167,7 @@
                     <div class="g-recaptcha" data-sitekey="6LfZPqseAAAAAPMgXlFJZodmEpZTkTgizBTY73Jb" data-callback='enableSubmit' data-expired-callback="disableSubmit"></div>
                     <input type="submit" id='form-submit' class="divbtn" value=" Submit ">
                 </div>
+                <div class="paypal"></div>
             </form>
         </div>
 
