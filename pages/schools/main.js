@@ -161,6 +161,7 @@ var submit =  document.querySelector('#form-submit');
 var gradeSelect = document.getElementById('student-grade');
 var schoolSelect = document.getElementById("school-select");
 schoolSelect.value='default';
+schoolSelect.disabled=true;
 submit.disabled = true;
 gradeSelect.value='default';
 fetchAllClassData();
