@@ -147,7 +147,7 @@ async function fetchAllClassData()
     console.log(schoolData);
     schoolSelect.addEventListener('change', (event) => filterClassesBySchool(allClassData, event.target.value) );
     schoolSelect.addEventListener('change',revealHiddenForm);
-    gradeSelect.addEventListener('change', generateClassList);
+    gradeSelect.addEventListener('change', () => generateClassList(classData));
     schoolSelect.value = 'default';
     schoolSelect.disabled = false;
 }
