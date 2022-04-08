@@ -5,7 +5,7 @@ async function postData(url = '', data = {}) {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data) 
     });
-    console.log(response.body);
+    console.log(response);
     return response.json(); // parses JSON response into native JavaScript objects
   }
 
@@ -139,7 +139,7 @@ function generateClassList()
 async function fetchAllClassData()
 {
     allClassData = await postData( "./.netlify/functions/getClasses", {className : schoolSelect.value});
-    schoolData = await(postData( "./.netlify/functions/getSchools") , {});
+    schoolData = await postData( "./.netlify/functions/getSchools" , {});
     
     /* //see if this works, itd save time. 
     allClassData = await allClassData;
