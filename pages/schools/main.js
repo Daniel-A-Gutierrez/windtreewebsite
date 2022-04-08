@@ -145,7 +145,7 @@ async function fetchAllClassData()
     schoolData = await schoolData; 
     */
     
-    console.log(schoolData);
+    console.log({"name":"school data" , "data": schoolData});
     schoolSelect.addEventListener('change', (event) => filterClassesBySchool(allClassData, event.target.value) );
     schoolSelect.addEventListener('change',revealHiddenForm);
     gradeSelect.addEventListener('change', generateClassList);
@@ -153,7 +153,7 @@ async function fetchAllClassData()
     schoolSelect.disabled = false;
 }
 
-
+//setup paypal payments
 paypal.Buttons({
     style:
     {

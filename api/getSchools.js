@@ -58,6 +58,7 @@ exports.handler = async (event,context) =>
         let response = 
         {
             statusCode: 200,
+            headers : {'Content-Type' : 'application/json'},
             body: JSON.stringify(rowData)
         };
         return response;
