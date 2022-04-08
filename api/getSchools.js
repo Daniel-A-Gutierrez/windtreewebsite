@@ -59,7 +59,7 @@ exports.handler = async (event,context) =>
         {
             statusCode: 200,
             headers : {'Content-Type' : 'application/json'},
-            body: JSON.stringify({'schools' : rowData})
+            body: JSON.stringify(rowData)
         };
         return response;
     }

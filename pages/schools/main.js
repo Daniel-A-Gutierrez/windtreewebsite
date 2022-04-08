@@ -5,7 +5,6 @@ async function postData(url = '', data = {}) {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data) 
     });
-    console.log(response);
     return response.json(); // parses JSON response into native JavaScript objects
   }
 
@@ -136,6 +135,20 @@ function generateClassList()
     classList.appendChild(frag);
 }
 
+function generateSchoolList(arr)
+{
+    //<option value="School A">School 1</option>
+    let frag = new DocumentFragment();
+    arr.forEach(schoolName =>
+        {
+            let opt = document.createElement('option');
+            opt.setAttribute("value" , schoolName);
+            opt.innerText = schoolName;
+            frag.appendChild(opt);
+        })
+    schoolSelect.appendChild(frag);
+}
+
 async function fetchAllClassData()
 {
     allClassData = await postData( "./.netlify/functions/getClasses", {className : schoolSelect.value});
@@ -145,8 +158,7 @@ async function fetchAllClassData()
     allClassData = await allClassData;
     schoolData = await schoolData; 
     */
-    
-    console.log({"name":"school data" , "data": schoolData});
+    generateSchoolList(schoolData);
     schoolSelect.addEventListener('change', (event) => filterClassesBySchool(allClassData, event.target.value) );
     schoolSelect.addEventListener('change',revealHiddenForm);
     gradeSelect.addEventListener('change', generateClassList);
