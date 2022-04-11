@@ -198,10 +198,10 @@ paypal.Buttons({
     onApprove: (data, actions) => {
       return actions.order.capture().then(function(orderData) 
       {
-        transactionId.value = orderData.id ;
+        const transaction = orderData.purchase_units[0].payments.captures[0];
+        transactionId.value = transaction.id ;
         // Successful capture! For dev/demo purposes:
         //console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-        const transaction = orderData.purchase_units[0].payments.captures[0];
         alert(`Transaction ${transaction.status}: ${transaction.id}`);
         // When ready to go live, remove the alert and show a success message within this page. For example:
         const element = document.getElementById('paypal-button-container');
