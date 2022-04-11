@@ -189,7 +189,7 @@ paypal.Buttons({
             {
                 value: classTotal.toString() // Can also reference a variable or function
             },
-            description : itemName + " " + itemDesc
+            description : itemName + ": " + itemDesc
         }]
       });
     },
@@ -198,13 +198,14 @@ paypal.Buttons({
     onApprove: (data, actions) => {
       return actions.order.capture().then(function(orderData) 
       {
+        transactionId.value = orderData.id ;
         // Successful capture! For dev/demo purposes:
-        console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+        //console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
         const transaction = orderData.purchase_units[0].payments.captures[0];
-        alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+        alert(`Transaction ${transaction.status}: ${transaction.id}`);
         // When ready to go live, remove the alert and show a success message within this page. For example:
-        // const element = document.getElementById('paypal-button-container');
-        // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+        const element = document.getElementById('paypal-button-container');
+        element.innerHTML = '<h3>Thank you for your payment!</h3>';
         // Or go to another URL:  actions.redirect('thank_you.html');
       });
     }
@@ -218,6 +219,7 @@ var human = document.querySelector('.g-recaptcha');
 var submit =  document.querySelector('#form-submit');
 var gradeSelect = document.getElementById('student-grade');
 var schoolSelect = document.getElementById("school-select");
+var transactionId = document.getElementById('transaction-id');
 schoolSelect.value='default';
 schoolSelect.disabled=true;
 submit.disabled = true;

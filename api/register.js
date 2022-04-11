@@ -34,7 +34,6 @@ async function addToAbridgedSheet(auth,data,googleSheets)
     //console.log(data.school);
     let row = [
         data['student last name'],
-        data[''],
         data['student first name'],
         data['class selection'],
         data['parent last name'] + ", " + data['parent first name'],
