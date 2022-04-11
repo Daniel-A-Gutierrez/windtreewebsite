@@ -38,6 +38,7 @@ async function addToAbridgedSheet(auth,data,googleSheets)
         data['student grade'],
         data['class selection'],
         data['transaction id'],
+        data['parent email'],
         data['parent last name'] + ", " + data['parent first name'],
         data['parent phone'],
         data['allergies'],
