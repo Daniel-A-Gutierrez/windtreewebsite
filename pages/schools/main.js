@@ -178,7 +178,10 @@ paypal.Buttons({
     },
 
     // Sets up the transaction when a payment button is clicked
-    createOrder: (data, actions) => {
+    createOrder: (data, actions) => 
+    {
+      let itemName = 'registration of ' + document.querySelector("#student-first-name").value + " " + document.querySelector("#student-last-name").value;
+      let itemDesc = document.querySelector("#class-selection").value;
       return actions.order.create({
         purchase_units: 
         [{
@@ -186,11 +189,7 @@ paypal.Buttons({
             {
                 value: classTotal.toString() // Can also reference a variable or function
             },
-            items : 
-            [{
-                name: 'registration of ' + document.querySelector("#student-first-name").value + " " + document.querySelector("#student-last-name").value,
-                description : document.querySelector("#class-selection").value
-            }]
+            description : itemName + " " + itemDesc
         }]
       });
     },
