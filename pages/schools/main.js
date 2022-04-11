@@ -151,8 +151,10 @@ function generateSchoolList(arr)
 
 async function fetchAllClassData()
 {
-    allClassData = await postData( "./.netlify/functions/getClasses", {className : schoolSelect.value});
-    schoolData = await postData( "./.netlify/functions/getSchools" , {});
+    allClassData =  postData( "./.netlify/functions/getClasses", {className : schoolSelect.value});
+    schoolData =  postData( "./.netlify/functions/getSchools" , {});
+    allClassData = await allClassData;
+    schoolData = await schoolData;
     
     /* //see if this works, itd save time. 
     allClassData = await allClassData;
@@ -220,10 +222,18 @@ var submit =  document.querySelector('#form-submit');
 var gradeSelect = document.getElementById('student-grade');
 var schoolSelect = document.getElementById("school-select");
 var transactionId = document.getElementById('transaction-id');
+var form = document.getElementById('registration');
 schoolSelect.value='default';
 schoolSelect.disabled=true;
 submit.disabled = true;
 gradeSelect.value='default';
 fetchAllClassData();
+
+function submitForm(e)
+{
+    e.preventDefault();
+    form.submit();
+
+}
 
 //document.querySelector('form').addEventListener( 'submit', (event) => event.preventDefault()) 
