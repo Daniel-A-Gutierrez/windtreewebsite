@@ -30,11 +30,18 @@ async function addToMasterSheet(auth, data, googleSheets)
 async function addToAbridgedSheet(auth,data,googleSheets)
 {
     const schoolName = data.school;
-    console.log("Schools : ");
-    console.log(data.school);
-    let row = [data['student last name']];
-    console.log(data);
-    console.log(row);
+    //console.log("Schools : ");
+    //console.log(data.school);
+    let row = [
+        data['student last name'],
+        data[''],
+        data['student first name'],
+        data['class selection'],
+        data['parent last name'] + ", " + data['parent first name'],
+        data['parent phone'],
+        data['allergies'],
+        data['Conditions'],
+    ];
     const GOOGLE_SPREADSHEET_ID = process.env.ENV_SCHOOLS_SHEET_ID;
     await googleSheets.spreadsheets.values.append(
         {
