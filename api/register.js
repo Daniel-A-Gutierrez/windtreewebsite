@@ -85,8 +85,8 @@ exports.handler = async (event,context) =>
         await schools;
         let response = 
         {
-            statusCode: 200,
-            body: "success"
+            statusCode: 301,
+            body: "/home"
         };
         return response;
     }
