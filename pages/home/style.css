@@ -314,7 +314,7 @@ body
 .gallery-left
 {
     position:absolute;
-    z-index: -1;
+    z-index: 1;
     top: calc(50% - 30px);
     left: calc(2.5% - 30px);
     font-size:60px;
@@ -331,7 +331,7 @@ body
 .gallery-right
 {
     position:absolute;
-    z-index:-1;
+    z-index:1;
     top: calc(50% - 30px);
     left: calc(97.5% - 30px);
     font-size:60px;
@@ -347,7 +347,6 @@ body
     left: -200%;
     display:flex;
     transition:left .75s;
-    z-index:-2;
 }
 
 .gallery-image
