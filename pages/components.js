@@ -21,7 +21,7 @@ class Navbar extends HTMLElement
                 justify-content:space-between;
                 margin:0px;
                 border-bottom: darkgrey solid 1px;
-                z-index: 1;
+                z-index: 5;
             }
 
             .navbar-link-list

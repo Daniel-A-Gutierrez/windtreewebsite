@@ -100,7 +100,6 @@ body
     color : #000;
     transition: transform .5s , color .3s;
     user-select : none;
-    z-index: -1;
 
 }
 .slides-right
@@ -113,7 +112,6 @@ body
     color : #000;
     transition: transform .5s ,color .3s;
     user-select : none;
-    z-index: -1;
 }
 
 .slides-left:hover, .slides-right:hover
