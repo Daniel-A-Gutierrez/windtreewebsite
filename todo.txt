@@ -8,9 +8,9 @@ SCHOOLS
     check that all fields of form have data before submission. x
 
 BACKEND
-    handle schools form submissions to split info into abridged sections on appropriate forms 
+    handle schools form submissions to split info into abridged sections on appropriate forms  x
     integrate recapcha on contact us x
-    redirect page for register
+    redirect page for register x
     **register decrements the availability for a class depending on school and class
     **backend validates captcha before submitting to sheets.
 
