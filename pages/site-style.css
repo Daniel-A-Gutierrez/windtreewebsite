@@ -14,12 +14,16 @@
     font-style : normal;
 }
 
+html{
+    min-width:1640px;
+}
+
 body{
     margin:0;
     font-family:'Poppins',sans-serif;
     min-height:100vh;
     position:relative;
-    padding-top:calc(86px + 43px);
+    /*padding-top:calc(86px + 43px); made navbar no longer fixed so this is unnecessary*/
     padding-bottom: 86px;
     box-sizing: border-box;
 }
