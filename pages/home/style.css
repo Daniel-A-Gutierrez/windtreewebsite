@@ -1,3 +1,5 @@
+html{min-width:1640px;}
+
 body
 {
     padding-top:0px !important;
@@ -7,8 +9,8 @@ body
     background-image:url("images/Robotics-Camp-0031-compressed.jpg");
     background-size:cover;
     background-position : center center;
-    background-attachment: fixed;
-    width:100%;
+    /*background-attachment: fixed;*/
+    width:auto;
     padding-top:86px;
     height:800px;
     color:white;
