@@ -102,6 +102,7 @@ body
     color : #000;
     transition: transform .5s , color .3s;
     user-select : none;
+
 }
 .slides-right
 {
@@ -227,6 +228,8 @@ body
 {
     font-size:24px;
     font-weight:bold;
+    text-decoration:none;
+    color:white;
 }
 
 /*----------------ABOUT US---------------------*/

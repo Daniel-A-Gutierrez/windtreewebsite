@@ -72,11 +72,11 @@ p
 
 select
 {
-    display:block;
     border: #333 1px solid;
     padding: 8px 5px 8px 15px;
     background-color:#eee;
-    margin:35px;
+    display:block;
+    margin:15px 0px 5px 0px;
     font-size:18px;
     font-family:'Poppins';
 }
@@ -84,7 +84,9 @@ select
 
 .school-select
 {
+    display:block;
     width:33%;
+    margin:35px;
     margin-left:auto;
     margin-right:auto;
 }
@@ -104,6 +106,7 @@ label
 {
     font-size:20px;
     color:#333;
+    margin:15px 0px;
 }
 #form-hidden-content 
 {
@@ -115,7 +118,7 @@ label
     color:#888;
     margin-right:15px;
 }
-.text-input
+.text-input 
 {
     display:block;
     width:100%;
@@ -130,13 +133,68 @@ label
     color:#333;
 }
 
+.date-input
+{
+    border: #333 1px solid;
+    height:27px;
+    padding: 8px 0px;
+    background-color:#eee;
+    resize: none;
+    margin:15px 0px 5px 0px;
+    font-size:18px;
+    font-family:'Poppins';
+    color:#333;
+    display:block;
+}
+
+.age-select
+{
+    max-height:400px;
+    
+}
+
+.checkbox-input
+{
+    width:2em;
+    height:2em;
+    position:relative;
+    right:2px;
+}
+
+.long
+{
+    display:block;
+}
+
+.short
+{
+    width:15%;
+}
+
 /*ADDRESS*/
 
 
+.class-row
+{
+    display:table;
+}
 
+.class-row>span
+{
+    display:table-cell;
+    vertical-align: middle;
+}
 
+small
+{
+    font-size : 10px;
+    color:#888;
+}
 
-
+.g-recaptcha
+{
+    margin-bottom:40px;
+}
 
 
 /*----------------DIVBTN---------------------*/
@@ -146,7 +204,7 @@ label
     display:inline-flex;
     align-self:center;
     padding: auto;
-    border:none;
+    border:#333 1px solid;
     background-color:#4a82b2;
     box-shadow:0px 0px 5px 0px rgba(0,0,0,.5);
     transition: all .3s ease-in-out;
@@ -155,6 +213,10 @@ label
     text-align: center;
     user-select: none;
     margin:10px;
+    font-size:16px;
+    font-weight:bold;
+    color:white;
+    text-decoration: none;
 }
 
 .divbtn:hover
@@ -163,16 +225,22 @@ label
     box-shadow:0px 0px 5px 0px rgba(0,0,0,.5);
 }
 
-.divbtn 
+.divbtn:disabled
 {
-    font-size:24px;
-    font-weight:bold;
-    color:white;
-    text-decoration: none;
+    background-color:grey !important;
+    color:#333;
 }
 
+.form-inline-block
+{
+    display:inline-block;
+}
 
-
+#paypal
+{
+    max-width: 303px;
+    margin-top : 30px;
+}
 
 /*----------------FOOTER---------------------*/
 
@@ -184,22 +252,4 @@ footer
     text-align: center;
     box-sizing: border-box;
     padding:40px;
-}
-
-#dummycarousel
-{
-    align-self:center;
-    font-size:100px;
-}
-
-#dummycontainer
-{
-    box-sizing: border-box;
-    width : 100%;
-    overflow:hidden auto;
-}
-
-#dummycontent 
-{
-    height : 150vh;
 }

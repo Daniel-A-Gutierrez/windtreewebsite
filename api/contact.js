@@ -1,6 +1,6 @@
-require('dotenv').config()
-const { GoogleSpreadsheet } = require('google-spreadsheet')
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const {google} = require("googleapis");
+const { auth } = require("googleapis/node_modules/google-auth-library");
+const fetch = require('node-fetch');
 
 function decode(s, q) {
     var i, p;
@@ -13,87 +13,71 @@ function decode(s, q) {
     return q;
 }
 
+async function postData(url = '', data = {}) {
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: 'POST', 
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data) 
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
+  }
+
 exports.handler = async (event,context) => 
 {
-    const GOOGLE_SPREADSHEET_ID = process.env.ENV_CONTACT_SHEET_ID;
-    const doc = new GoogleSpreadsheet(GOOGLE_SPREADSHEET_ID);
-    try 
+    try
     {
-        await doc.useServiceAccountAuth(
+        //authenticate
+        const GOOGLE_SPREADSHEET_ID = process.env.ENV_CONTACT_SHEET_ID;
+
+        const serviceAccountAuth = new google.auth.JWT({
+            email: process.env.ENV_GOOGLE_SERVICE_ACCOUNT_EMAIL,
+            key: process.env.ENV_GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+            scopes: 'https://www.googleapis.com/auth/spreadsheets'
+          });
+
+        const googleSheets = google.sheets(
         {
-            client_email: process.env.ENV_GOOGLE_SERVICE_ACCOUNT_EMAIL,
-            private_key: process.env.ENV_GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n')
+            version:"v4",
+            auth:serviceAccountAuth
         });
-        await doc.loadInfo();
-
-        //const sheet = doc.sheetsByIndex[0];
-
-        //now to try appending a row
-        let request= new XMLHttpRequest();
+        //put form data into js object
         const data = decode(event.body);
         let vals = Object.values(data);
-        request.open("POST",new URL(`https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREADSHEET_ID}/values/Sheet1:append`), false);
-        vals = {"range" : "Sheet1",
-            "majorDimension":"ROWS",
-            "values": vals}
-        request.send(encodeURI(vals));
-        console.log(request);
-        request.onload = (event)=>console.log(event);
-        //console.log({"doc":doc, "sheet":sheet});
-        //console.log(event);
-        //console.log(decodeURI(event.body));
-        //const data = JSON.parse(event.body);//not working because its url encoded not json!
 
+        console.log(data);
+        //verify form response with capcha
+        const captcha_data = {secret:CAPTCHA_SECRET,response:data['g-recaptcha-response']};
+        let captcha_api_response = await postData('https://www.google.com/recaptcha/api/siteverify', captcha_data);
 
-
-        //const rows = await sheet.getRows();
+        if(captcha_api_response && captcha_api_response.success)
+        {
+            //write data to sheets
+            await googleSheets.spreadsheets.values.append(
+            {
+                auth:serviceAccountAuth, 
+                spreadsheetId : GOOGLE_SPREADSHEET_ID,
+                range:"Sheet1",
+                valueInputOption:"USER_ENTERED",
+                resource: {values:[vals]}
+            })
+            //respond to client with success
+            let response = 
+            {
+                statusCode: 200,
+                body: 'form submitted'//JSON.stringify(data)
+            };
+            return response;
+        }
+        throw captcha_api_response;
+    }
+    catch(err)
+    {
         let response = 
         {
-            statusCode: 200,
-            body: JSON.stringify(data)
-        };
-        return response
-    } 
-    catch (err) 
-    {
-        console.error(err)
-        response = 
-        {
             statusCode: 500,
-            body: 'Error, maybe the problem will be resolved later'
-        }
+            body: encodeURI(err)
+        };
+        return response;
     }
-    return response
 }
-
-/*exports.handler = async function(event,context)
-{
-        //do fn
-        /*{
-    "path": "Path parameter (original URL encoding)",
-    "httpMethod": "Incoming request’s method name",
-    "headers": {Incoming request headers},
-    "queryStringParameters": {Query string parameters},
-    "body": "A JSON string of the request payload",
-    "isBase64Encoded": "A boolean flag to indicate if the applicable request payload is Base64-encoded"
-}
-
-exports.handler = async function (event, context) {
-    return {
-        statusCode: 200,
-        body: JSON.stringify({ message: "Hello World" }),
-    };
-}
-
-const transporter = nodemailer.createTransport(
-    mg({
-        auth: {
-            api_key: process.env.MAILGUN_API_KEY,
-            domain: process.env.MAILGUN_DOMAIN,
-        },
-    })
-);
- 
-
-const auth = await google.auth.getClient({scopes:['https://www.googleapis.com/auth/spreadsheets.']})
-}*/

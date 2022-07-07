@@ -11,40 +11,166 @@
     <link rel='stylesheet', href='/fonts/fontello/css/fontello.css'>-->
     <link rel='stylesheet', href='site-style.css'>
     <link rel='stylesheet', href='schools/style.css'>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script defer src='components.js'></script>
     <script defer src="schools/main.js"></script>
     <title>Schools</title>
 </head>
 <body>
+    <script src="https://www.paypal.com/sdk/js?client-id=AWK7vezW70tIptxSuRCDFJr9-VHeHeM0RufSmQbJD32Xrinjcut82CyMhawgteRfG-V8xEHVYe72XoSt&currency=USD"></script>
     <nav-bar></nav-bar>
     <div class="main-content-container">
         <br>
         <h1 class="title">Register</h1>
         <br>
         <div class="main-content">
-            <form id="registration" data-netlify="true" class="application" name="registration">
+            <form id="registration" action="/.netlify/functions/register" method="post" class="application" name="registration">
                 <h2>Select your school</h2>
                 <p></p>
                 <select class="school-select" id="school-select" form="registration" name="school">
                     <option value="default" selected>Select a school</option>
-                    <option value="School 1">School 1</option>
-                    <option value="School 2">School 2</option>
                 </select>
                 <!--<div class="divbtn"><a href=''>Submit</a></div>-->
                 <div hidden id='form-hidden-content'>
                     <div class="input-group">
+                        <h2>Student Information</h2>
                         <div class="label-heading">Student Name</div>
                         <label class="label-subtext">
-                            <input type="text" class="text-input" name="student first name" id="student-first-name">
+                            <input type="text" class="text-input" name="student first name" id="student-first-name" required>
                             first name
                         </label>
                         <label class="label-subtext">
-                            <input type="text" class="text-input" name="student last name" id="student-last-name">
+                            <input type="text" class="text-input" name="student last name" id="student-last-name" required>
                             last name
                         </label>
+                        <div class="form-line">
+                            <div class="form-inline-block">
+                                <div class="label-heading">Date of Birth</div>
+                                <label class="label-subtext">
+                                    <input type="date" class="date-input" name="student DOB" id="student-DOB" required>
+                                    Date of Birth
+                                </label>
+                                <label class="label-subtext">
+                                    <select class="age-select" name="student age" id="student-age"  form="registration" required>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                    </select>
+                                    Age
+                                </label>
+                            </div>
+                            <div class="form-inline-block">
+                                <div class="label-heading">Grade</div>
+                                <label class="label-subtext">
+                                    <select class="age-select" name="student grade" id="student-grade"  form="registration">
+                                        <option value="default">Select Grade</option>
+                                        <option value="0">Kindergarten</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                    Grade
+                                </label>
+                            </div>
+                        </div>
+                        <div class="label-heading">Returning Student?</div>
+                        <label class="label-subtext">
+                            <input type="checkbox" class="checkbox-input" name="student returning" id="student-ret" >
+                        </label>
+                        <h2>Contact Information</h2>
+                        <div class="label-heading">Parent or Guardian Name</div>
+                        <label class="label-subtext">
+                            <input type="text" class="text-input" name="parent first name" id="parent-first-name" required>
+                            first name
+                        </label>
+                        <label class="label-subtext">
+                            <input type="text" class="text-input" name="parent last name" id="parent-last-name" required>
+                            last name
+                        </label>
+                        <div class="label-heading">Contact</div>
+                        <label class="label-subtext">
+                            <input type="email" class="text-input" name="parent email" id="parent-email" required>
+                            email
+                        </label>
+                        <label class="label-subtext">
+                            <input type="tel" class="text-input" name="parent phone" id="parent-phone" minlength="7" maxlength="11" placeholder="1234567890" required>
+                            phone
+                        </label>
+                        <div class="label-heading">Relation To Student</div>
+                        <label class="label-subtext">
+                            <input type="text" class="text-input" name="parent relation" id="parent-relation" required>
+                            relation
+                        </label>
+                        <div class="label-heading">Address</div>
+                        <label class="long label-subtext">
+                            <input type="text" class="text-input" name="street address 1" id="st-address-1" placeholder="123 3rd Street" required>
+                            Street Address Line 1
+                        </label>
+                        <label class="long label-subtext">
+                            <input type="text" class="text-input" name="street address 2" id="st-address-2" placeholder="Apt. Number" required>
+                            Street Address Line 2
+                        </label>
+                        <label class="short label-subtext">
+                            <input type="text" class="text-input" name="city" id="city" placeholder="City" required>
+                            City
+                        </label>
+                        <label class="short label-subtext">
+                            <input type="text" class="text-input" name="state" id="state" placeholder="State" required>
+                            State
+                        </label>
+                        <label class="short label-subtext">
+                            <input type="text" class="text-input" name="zip" id="zip" placeholder="Zip Code" required>
+                            Zip Code
+                        </label>
+                        <label class="short label-subtext">
+                            <input type="text" class="text-input" name="country" id="country" placeholder="USA" required>
+                            Country
+                        </label>
+                        <h2>Health Information</h2>
+                        <div class="label-heading">Allergies</div>
+                        <label class="long label-subtext">
+                            <textarea class="text-input" name="allergies" id="allergies" placeholder="Peanuts" rows="2" style="height:unset"></textarea>
+                        </label>
+                        <div class="label-heading">Medical Conditions</div>
+                        <label class="long label-subtext">
+                            <textarea class="text-input" name="Conditions" id="Conditions" placeholder="Albinism" rows="2" style="height:unset"></textarea>
+                        </label>
+                        <h2>Enrollment</h2>
+                        <div class="class-list">
+                            Select A Grade To See Available Classes
+                        </div>
+                        <div><br><span>Total : $<span id="price-tracker">0</span> USD</span></div>
+                        <h2>Payment</h2>
+                        <p>Payment via check or cash must be recieved prior to the first day of class at 981 Corporate Center Drive, Pomona, CA.</p>
+                        <input hidden type="text" id="transaction-id" name="transaction id" value="NA">
                     </div>
-                    <input type="submit" class="divbtn" value=" Submit ">
+                    
+                    <div id="paypal"></div>
+                    <div class="g-recaptcha" data-sitekey="6LfZPqseAAAAAPMgXlFJZodmEpZTkTgizBTY73Jb" data-callback='enableSubmit' data-expired-callback="disableSubmit"></div>
+                    <input type="submit" id='form-submit' class="divbtn" value=" Submit ">
                 </div>
+                
             </form>
         </div>
 

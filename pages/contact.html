@@ -11,6 +11,7 @@
     <link rel='stylesheet', href='/fonts/fontello/css/fontello.css'>-->
     <link rel='stylesheet', href='site-style.css'>
     <link rel='stylesheet', href='contact/style.css'>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script defer src='components.js'></script>
     <script defer src="contact/main.js"></script>
     <title>Contact</title>
@@ -22,7 +23,7 @@
         <h1 class="title">Contact</h1>
         <br>
         <div class="main-content">
-            <form class='application' name="contact-us" action="/.netlify/functions/contact2" method="post">
+            <form class='application' name="contact-us" action="/.netlify/functions/contact" method="post">
                 <h2>GET IN TOUCH</h2>
                 <br>
                 <p>If you have any questions of suggestions, please contact us by email or fill in the form below. <br> We will get back to you as soon as possible, thank you!</p>
@@ -46,11 +47,8 @@
                     Message
                     <textarea rows='8' class="message-input" name="message"></textarea>
                 </label>
-                <label for="" class="bot-question-label">
-                    Anti-bot Question: What is 8-3?
-                    <input type="text" class="anti-bot-input" name="bot question">
-                </label>
-                <input type="submit" class="divbtn" value="Submit">
+                <div class="g-recaptcha" data-sitekey="6LfZPqseAAAAAPMgXlFJZodmEpZTkTgizBTY73Jb" data-callback='enableSubmit' data-expired-callback="disableSubmit"></div>
+                <input type="submit" class="divbtn" value="Submit" id='form-submit'>
             </form>
             <div class="divider"></div>
             <div class='location'>
