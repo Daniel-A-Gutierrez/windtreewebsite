@@ -9,7 +9,7 @@ class Navbar extends HTMLElement
         this.innerHTML = `<style>
             #navbar
             {
-                position:fixed;
+                /*position:fixed;*/
                 top : 0; left:0;
                 box-sizing: border-box;
                 display:flex;
