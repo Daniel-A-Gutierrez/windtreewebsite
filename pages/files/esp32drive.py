@@ -1,81 +1,103 @@
-#pins 0-5 for drive control
-from machine import Pin, Signal, PWM, lightsleep
+#https://www.youtube.com/watch?v=d7oFD-zQpuQ - useful vid
+#drive script using an l293d type motor controller.
+from machine import Pin, Signal, PWM
 from time import sleep_ms
 BACKWARD = False
 FORWARD = True
 
-LBAK = Signal(15,Pin.OUT)    
-LFWD = Signal(18,Pin.OUT)
-RFWD = Signal(21,Pin.OUT)    
-RBAK = Signal(22,Pin.OUT) 
+LBAK = PWM(Pin(15))   
+LFWD = PWM(Pin(18))
+RFWD = PWM(Pin(21))    
+RBAK = PWM(Pin(22)) 
 
-LPOW = PWM(Pin(19))
-LPOW.freq(50)
-LPOW.duty(0) #esp32 requires just "duty" from 0-1023
-RPOW = PWM(Pin(23))
-RPOW.freq(50)
-RPOW.duty(0)
+LBAK.freq(50)
+LFWD.freq(50)
+RFWD.freq(50)
+RBAK.freq(50)
 
-def LeftDir(forward : bool):
-    if(forward):
-        LFWD.on()
-        LBAK.off()
+LBAK.duty(0)
+LFWD.duty(0)
+RFWD.duty(0)
+RBAK.duty(0)
+
+SPEED = 1.0
+
+
+def SetSpeed(speed):
+    global SPEED
+    if(SPEED >= 0.0 and SPEED <=1.0 ):
+        SPEED = speed
     else:
-        LFWD.off()
-        LBAK.on()
+        print("SPEED must be between 0 and 1 - was " , SPEED)
 
-def RightDir(forward : bool):
-    if(forward):
-        RFWD.on()
-        RBAK.off()
+#throttle must be between 0 and 1
+def SetLeft(forward : bool):
+    if(SPEED >= 0.0 and SPEED <=1.0 ):
+        power = int(SPEED*1023)
+        if(forward):
+            LFWD.duty(power)
+            LBAK.duty(0)
+        else:
+            LFWD.duty(0)
+            LBAK.duty(power)
     else:
-        RFWD.off()
-        RBAK.on()
-        
-
-def Throttle(frac):
-    #'''sets the pwm duty cycle of both wheels to input, where input is 0-1.0'''
-    if(frac >= 0.0 and frac <=1.0 ):
-        duty = frac * (1023)
-        LPOW.duty( int(duty))
-        RPOW.duty( int(duty))
+        print("SPEED must be between 0 and 1 - was " , SPEED)
+#throttle must be between 0 and 1
+def SetRight(forward : bool):
+    if(SPEED >= 0.0 and SPEED <=1.0 ):
+        power = int(SPEED*1023)
+        if(forward):
+            RFWD.duty(power)
+            RBAK.duty(0)
+        else:
+            RFWD.duty(0)
+            RBAK.duty(power)
     else:
-        print("duty cycle must be between 0 and 1")
+        print("SPEED must be between 0 and 1 - was " , SPEED)
 
-def Left():
-    LeftDir(BACKWARD)
-    RightDir(FORWARD)
-    Throttle(.5)
+def Left(duration=0):
+    if(SPEED==0.0):
+        SetSpeed(1.0)
+    SetLeft(BACKWARD)
+    SetRight(FORWARD)
+    sleep_ms(duration)
 
-def Right():
-    LeftDir(FORWARD)
-    RightDir(BACKWARD)
-    Throttle(.5)
+def Right(duration=0):
+    if(SPEED==0.0):
+        SetSpeed(1.0)
+    SetLeft(FORWARD)
+    SetRight(BACKWARD)
+    sleep_ms(duration)
 
-def Backward():
-    LeftDir(BACKWARD)
-    RightDir(FORWARD)
-    Throttle(1.0)
+def Backward(duration=0):
+    if(SPEED==0.0):
+        SetSpeed(1.0)
+    SetLeft(BACKWARD)
+    SetRight(BACKWARD)
+    sleep_ms(duration)
 
-def Forward():
-    LeftDir(FORWARD)
-    RightDir(FORWARD)
-    Throttle(1.0)
+def Forward(duration=0):
+    if(SPEED==0.0):
+        SetSpeed(1.0)
+    SetLeft(FORWARD)
+    SetRight(FORWARD)
+    sleep_ms(duration)
 
-def Stop():
-    Throttle(0.0)
+def Stop(duration=0):
+    SetSpeed(0.0)
+    SetLeft(FORWARD)
+    SetRight(FORWARD)
+    sleep_ms(duration)
 
 if(__name__=="__main__"):
-    led = Pin(2, Pin.OUT)
-    s = Signal(led)
-    for i in range(4):
-        Left()
-        sleep_ms(1000) # it turns out lightsleep turns off all the pins.
-        Right()
-        sleep_ms(1000)
-        #Forward()
-        #lightsleep(500)
-        #Left()
-        #lightsleep(300)
-        #print("looped")
-    Stop()
+    for i in range(1):
+        Forward(1000)
+        Stop(100)
+        Backward(1000)
+        Stop(100)
+        Left(1000)
+        Stop(100)
+        #sleep_ms(1000) # it turns out lightsleep turns off all the pins.
+        Right(1000)
+        Stop(100)
+        Stop()
