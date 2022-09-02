@@ -183,7 +183,7 @@ paypal.Buttons({
     createOrder: (data, actions) => 
     {
       let itemName = 'registration of ' + document.querySelector("#student-first-name").value + " " + document.querySelector("#student-last-name").value;
-      let itemDesc = document.querySelector("#class-selection").value;
+      let itemDesc = document.querySelector("#class-selection").value + " " + document.querySelector(".school-select").value;
       return actions.order.create({
         purchase_units: 
         [{
@@ -206,7 +206,7 @@ paypal.Buttons({
         //console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
         alert(`Transaction ${transaction.status}: ${transaction.id}`);
         // When ready to go live, remove the alert and show a success message within this page. For example:
-        const element = document.getElementById('paypal-button-container');
+        const element = document.getElementById('paypal');
         element.innerHTML = '<h3>Thank you for your payment!</h3>';
         // Or go to another URL:  actions.redirect('thank_you.html');
       });
