@@ -14,11 +14,13 @@ function revealHiddenForm(e)
     if(e.target.value !== "default")
     {
         document.getElementById('form-hidden-content').removeAttribute('hidden');
+        document.getElementById('flyer').setAttribute('href', `images/${schoolSelect.value}.pdf`)
         generateClassList();
     }
     else 
     {
         document.getElementById('form-hidden-content').setAttribute('hidden', "");
+        document.getElementById('flyer').setAttribute('href', ``);
     }
 }
 
@@ -39,6 +41,7 @@ async function filterClassesBySchool(allClassData, schoolName)
     //keep an eye out for the status of the response code.
     console.log(classData);
     classTotal = 0;
+    discounts = [];
     return classData;
 }
 
@@ -62,6 +65,19 @@ function generateSchoolList(schools)
     //unused
 }
 
+function ClassesToCost(classes = [], selection= [])
+{
+    let cost = 0 ;
+    classes.forEach((C) => 
+    {
+        if(selection.includes(C.className))
+        {
+            cost += C.price;
+        }
+    })
+    return cost;
+}
+
 //should filter selectable classes by grade and availability
 function generateClassList()
 {
@@ -69,6 +85,7 @@ function generateClassList()
     let classList = document.querySelector('.class-list');
     classList.innerHTML='';
     classTotal = 0;
+    discounts = [];
     priceTracker.innerText = classTotal;
     let studentGrade = parseInt(document.getElementById('student-grade').value);
     let frag = new DocumentFragment();
@@ -86,7 +103,12 @@ function generateClassList()
             <input type="checkbox" class="checkbox-input" value="class1">
             <span><span>Class1  <small>$100 USD</small></span></span>
         </div> */
-        if( (parseInt(Class.availability) > 0) && Class.grades.indexOf(studentGrade.toString())!==-1)
+        if ( Class.className === 'discount') 
+        {
+            discounts = Class.price;
+            discounts = discounts.split(',').map( (s) => s.parseInt());
+        }
+        else if( (parseInt(Class.availability) > 0) && Class.grades.indexOf(studentGrade.toString())!==-1)
         {
             let classrow = document.createElement('div');
             classrow.setAttribute('class','class-row');
@@ -97,20 +119,25 @@ function generateClassList()
             checkbox.addEventListener('change', (event) => 
             {
                 let change = (event.target.checked) ? 1 : -1 ; 
-                change*= parseInt(Class.price);
-                classTotal += change;
-                priceTracker.innerText = classTotal;
-
+                
                 //add it to class selection or remove it from class selection
                 if(change < 0)
-                {
-                    classArray = classArray.filter( (elem) => elem!==Class.className );
-                }
+                    {classArray = classArray.filter( (elem) => elem!==Class.className );}
                 else 
-                {
-                    classArray.push(Class.className);
-                }
+                    {classArray.push(Class.className);}
                 classSelection.setAttribute('value',classArray.toString());
+
+                //get subtotal
+                let subtotal = ClassesToCost( classData, classArray );
+                let discount = 0;
+                if(discounts) 
+                {
+                    if(discounts.length > classArray.length-1)
+                        {discounts[classArray.length-1];}
+                    else{ discount = discounts[discounts.length-1];} //cap discount
+                }
+                classTotal = subtotal + discount;
+                priceTracker.innerText = classTotal;
             });
             let classTextWrapper = document.createElement('span');
             let classNameText = document.createElement('span');
@@ -216,6 +243,7 @@ paypal.Buttons({
 var allClassData=[];
 var classData = [];
 var classTotal = 0;
+var discounts = []; //discounts[0] = discount for 2 classes, discounts[1] for 3 classes, etc.
 var priceTracker = document.getElementById('price-tracker');
 var human = document.querySelector('.g-recaptcha');
 var submit =  document.querySelector('#form-submit');
