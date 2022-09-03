@@ -72,7 +72,7 @@ function ClassesToCost(classes = [], selection= [])
     {
         if(selection.includes(C.className))
         {
-            cost += C.price;
+            cost += parseInt(C.price);
         }
     })
     return cost;
