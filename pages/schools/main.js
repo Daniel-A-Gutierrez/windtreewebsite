@@ -65,14 +65,27 @@ function generateSchoolList(schools)
     //unused
 }
 
+//note : classes with different costs must have unique names
 function ClassesToCost(classes = [], selection= [])
 {
-    let cost = 0 ;
-    classes.forEach((C) => 
+    let monomorphized = [];
+    classes.forEach( (C) => 
     {
-        if(selection.includes(C.className))
+        if (!monomorphized.includes( C.className))
         {
-            cost += parseInt(C.price);
+            monomorphized.push(  C.className );
+        }
+    });
+    let cost = 0 ;
+    monomorphized.forEach((m) => 
+    {
+        if(selection.includes(m.className))
+        {
+            let Class = classes.find( (c) => c.className = m.className);
+            let price = 10000000000;
+            if ( Class ){price = parseInt(Class.price);}
+
+            cost += price;
         }
     })
     return cost;
@@ -133,7 +146,7 @@ function generateClassList()
                 if(discounts) 
                 {
                     if(discounts.length > classArray.length-1)
-                        {discounts[classArray.length-1];}
+                        {discount = discounts[classArray.length-1];}
                     else{ discount = discounts[discounts.length-1];} //cap discount
                 }
                 classTotal = subtotal + discount;
