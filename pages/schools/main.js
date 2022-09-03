@@ -145,8 +145,8 @@ function generateClassList()
                 let discount = 0;
                 if(discounts) 
                 {
-                    if(discounts.length > classArray.length-1 & classArray.length>0)
-                        {discount = discounts[classArray.length-1];}
+                    if(discounts.length > classArray.length-1)
+                        {if(classArray.length > 0){discount = discounts[classArray.length-1];}}
                     else{ discount = discounts[discounts.length-1];} //cap discount
                 }
                 classTotal = subtotal - discount;
