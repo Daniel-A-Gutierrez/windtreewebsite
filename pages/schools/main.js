@@ -79,9 +79,9 @@ function ClassesToCost(classes = [], selection= [])
     let cost = 0 ;
     monomorphized.forEach((m) => 
     {
-        if(selection.includes(m.className))
+        if(selection.includes(m))
         {
-            let Class = classes.find( (c) => c.className = m.className);
+            let Class = classes.find( (c) => c.className = m);
             let price = 10000000000;
             if ( Class ){price = parseInt(Class.price);}
 
