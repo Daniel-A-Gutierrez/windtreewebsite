@@ -80,7 +80,7 @@ async function decrementAvailability(auth,data,googleSheets)
         let schoolMatch = c[0] === data["school"]
         let classMatch = data['class selection'].includes(c[1]);
         let gradeMatch = c[4].includes(data["student grade"]);
-        log.push(i, schoolMatch, classMatch, gradeMatch);
+        log.push([i, schoolMatch, classMatch, gradeMatch]);
         if(schoolMatch & classMatch & gradeMatch ){
             matches.push(i);
             availabilities.push(c[3]);
@@ -97,28 +97,28 @@ async function decrementAvailability(auth,data,googleSheets)
     ranges = matches.map( (rownum) => `C${rownum}` );
     console.log("RANGES");
     console.log(ranges);
-    ranges.forEach( async (cell,index) =>
+    for(let i = 0 ; i < ranges.length; i++)
     {
-        const res = await googleSheets.spreadsheets.values.update(
-        {
-            // The A1 notation of the values to update.
-            range: `Classes!${cell}`,
-
-            spreadsheetId: GOOGLE_SPREADSHEET_ID,
-            // How the input data should be interpreted.
-            valueInputOption: 'USER_ENTERED',
-        
-            // Request body metadata
-            requestBody: 
+        let res = await googleSheets.spreadsheets.values.update(
             {
-            // request body parameters
-            "range": `Classes!${cell}`,
-            "values": [`${availabilities[index] - 1}`]
-            },
-        });
+                // The A1 notation of the values to update.
+                range: `Classes!${cell}`,
+    
+                spreadsheetId: GOOGLE_SPREADSHEET_ID,
+                // How the input data should be interpreted.
+                valueInputOption: 'USER_ENTERED',
+            
+                // Request body metadata
+                requestBody: 
+                {
+                // request body parameters
+                "range": `Classes!${cell}`,
+                "values": [`${availabilities[index] - 1}`]
+                },
+            });
         console.log("RESPONSE");
         console.log(res);
-    });
+    }
 }
 
 
