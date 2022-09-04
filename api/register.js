@@ -58,12 +58,11 @@ async function addToAbridgedSheet(auth,data,googleSheets)
 
 async function decrementAvailability(auth,data,googleSheets)
 {
-    console.log("DATA")
+    console.log("DATA");
     console.log(data);
-    const GOOGLE_SPREADSHEET_ID = process.env.ENV_SCHOOLS_SHEET_ID
-    const getRows = await googleSheets.spreadsheets.values.get(
-        {
-            auth:auth,
+    const GOOGLE_SPREADSHEET_ID = process.env.ENV_SCHOOLS_SHEET_ID;
+    const getRows = await googleSheets.spreadsheets.values.get({
+            auth,
             spreadsheetId:GOOGLE_SPREADSHEET_ID,
             range:"Classes"
         });
@@ -141,7 +140,6 @@ exports.handler = async (event,context) =>
         });
 
         
-        googleSheets.spreadsheets.values.update()
         const data = decode(event.body);
         let vals = Object.values(data);
         console.log(data);
