@@ -113,7 +113,7 @@ async function decrementAvailability(auth,data,googleSheets)
             {
             // request body parameters
             "range": `Classes!${cell}`,
-            "values": `${availabilities[index] - 1}`
+            "values": [availabilities[index] - 1]
             },
         });
         console.log("RESPONSE");
@@ -144,7 +144,6 @@ exports.handler = async (event,context) =>
         const data = decode(event.body);
         let vals = Object.values(data);
         console.log(data);
-
         //write data
         let master = addToMasterSheet(serviceAccountAuth,vals,googleSheets);
         let schools = addToAbridgedSheet(serviceAccountAuth,data,googleSheets); //needs names to parse
