@@ -147,9 +147,10 @@ exports.handler = async (event,context) =>
         //write data
         let master = addToMasterSheet(serviceAccountAuth,vals,googleSheets);
         let schools = addToAbridgedSheet(serviceAccountAuth,data,googleSheets); //needs names to parse
-        decrementAvailability(serviceAccountAuth,data ,googleSheets);
+        
         await master;
         await schools;
+        await decrementAvailability(serviceAccountAuth,data ,googleSheets);
         let response = 
         {
             statusCode: 200,
