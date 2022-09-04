@@ -76,7 +76,7 @@ async function decrementAvailability(auth,data,googleSheets)
     let log = [];
     for(let i = 0 ;i < classes.length;i++)
     {
-        c = classes[i]
+        let c = classes[i]
         let schoolMatch = c[0] === data["school"]
         let classMatch = data['class selection'].includes(c[1]);
         let gradeMatch = c[4].includes(data["student grade"]);
@@ -94,7 +94,7 @@ async function decrementAvailability(auth,data,googleSheets)
     console.log(availabilities);
 
     //convert those indeces to letters
-    ranges = matches.map( (rownum) => `C${rownum+1}` );
+    let ranges = matches.map( (rownum) => `C${rownum+1}` );
     console.log("RANGES");
     console.log(ranges);
     for(let i = 0 ; i < ranges.length; i++)
