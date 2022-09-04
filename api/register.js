@@ -87,7 +87,7 @@ async function decrementAvailability(auth,data,googleSheets)
         }
     }
     console.log("Match log");
-    console.log(matches);
+    console.log(log);
     console.log("MATCHES");
     console.log(matches);
     console.log("Availabilities");
@@ -95,10 +95,11 @@ async function decrementAvailability(auth,data,googleSheets)
 
     //convert those indeces to letters
     ranges = matches.map( (rownum) => `C${rownum}` );
-
+    console.log("RANGES");
+    console.log(ranges);
     ranges.forEach( async (cell,index) =>
     {
-        const res = await sheets.spreadsheets.values.update(
+        const res = await googleSheets.spreadsheets.values.update(
         {
             // The A1 notation of the values to update.
             range: `Classes!${cell}`,
