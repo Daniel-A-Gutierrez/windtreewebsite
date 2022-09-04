@@ -56,6 +56,72 @@ async function addToAbridgedSheet(auth,data,googleSheets)
         );
 }
 
+async function decrementAvailability(auth,data,googleSheets)
+{
+    console.log("DATA")
+    console.log(data);
+    const GOOGLE_SPREADSHEET_ID = process.env.ENV_SCHOOLS_SHEET_ID
+    const getRows = await googleSheets.spreadsheets.values.get(
+        {
+            auth:auth,
+            spreadsheetId:GOOGLE_SPREADSHEET_ID,
+            range:"Classes"
+        });
+    let classes = getRows.data.values;
+    console.log("CLASSES");
+    console.log(classes);
+    
+    //get rows of classes student signed up for
+    let matches = [];
+    let availabilities = [];
+    let log = [];
+    for(let i = 0 ;i < classes.length;i++)
+    {
+        c = classes[i]
+        let schoolMatch = c[0] === data["school"]
+        let classMatch = data['class selection'].includes(c[1]);
+        let gradeMatch = c[4].includes(data["student grade"]);
+        log.push(i, schoolMatch, classMatch, gradeMatch);
+        if(schoolMatch & classMatch & gradeMatch ){
+            matches.push(i);
+            availabilities.push(c[3]);
+        }
+    }
+    console.log("Match log");
+    console.log(matches);
+    console.log("MATCHES");
+    console.log(matches);
+    console.log("Availabilities");
+    console.log(availabilities);
+
+    //convert those indeces to letters
+    ranges = matches.map( (rownum) => `C${rownum}` );
+
+    ranges.forEach( async (cell,index) =>
+    {
+        const res = await sheets.spreadsheets.values.update(
+        {
+            // The A1 notation of the values to update.
+            range: `Classes!${cell}`,
+
+            spreadsheetId: GOOGLE_SPREADSHEET_ID,
+            // How the input data should be interpreted.
+            valueInputOption: 'USER_ENTERED',
+        
+            // Request body metadata
+            requestBody: 
+            {
+            // request body parameters
+            "range": `Classes!${cell}`,
+            "values": `${availabilities[index] - 1}`
+            },
+        });
+        console.log("RESPONSE");
+        console.log(res);
+    });
+}
+
+
 exports.handler = async (event,context) => 
 {
     try
@@ -74,6 +140,8 @@ exports.handler = async (event,context) =>
             auth:serviceAccountAuth
         });
 
+        
+        googleSheets.spreadsheets.values.update()
         const data = decode(event.body);
         let vals = Object.values(data);
         console.log(data);
@@ -81,6 +149,7 @@ exports.handler = async (event,context) =>
         //write data
         let master = addToMasterSheet(serviceAccountAuth,vals,googleSheets);
         let schools = addToAbridgedSheet(serviceAccountAuth,data,googleSheets); //needs names to parse
+        decrementAvailability(serviceAccountAuth,data ,googleSheets);
         await master;
         await schools;
         let response = 
