@@ -69,7 +69,7 @@ function generateSchoolList(schools)
 function ClassesToCost(classes = [], selection= [])
 {
     let monomorphized = [];
-    let classes = [...classes]; //make a copy so we can modify
+    classes = [...classes]; //make a copy so we can modify
     classes.forEach( (C) => 
     {
         if (!monomorphized.includes( C.className))
