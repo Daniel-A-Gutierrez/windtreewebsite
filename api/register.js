@@ -78,12 +78,12 @@ async function decrementAvailability(auth,data,googleSheets)
     {
         let c = classes[i]
         let schoolMatch = c[0] === data["school"]
-        let classMatch = data['class selection'].includes(c[1]);
+        let classMatch = data['class selection'].split(",").includes(c[1]);
         let gradeMatch = c[4].includes(data["student grade"]);
         log.push([i, schoolMatch, classMatch, gradeMatch]);
         if(schoolMatch & classMatch & gradeMatch ){
             matches.push(i);
-            availabilities.push(c[3]);
+            availabilities.push(c[2]);
         }
     }
     console.log("Match log");
