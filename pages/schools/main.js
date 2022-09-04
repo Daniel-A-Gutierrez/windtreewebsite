@@ -69,6 +69,7 @@ function generateSchoolList(schools)
 function ClassesToCost(classes = [], selection= [])
 {
     let monomorphized = [];
+    let classes = [...classes]; //make a copy so we can modify
     classes.forEach( (C) => 
     {
         if (!monomorphized.includes( C.className))
@@ -81,7 +82,7 @@ function ClassesToCost(classes = [], selection= [])
     {
         if(selection.includes(m))
         {
-            let Class = classes.find( (c) => c.className = m);
+            let Class = classes.find( (c) => c.className === m);
             let price = 10000000000;
             if ( Class ){price = parseInt(Class.price);}
 
@@ -141,7 +142,7 @@ function generateClassList()
                 classSelection.setAttribute('value',classArray.toString());
 
                 //get subtotal
-                let subtotal = ClassesToCost( classData, classArray );
+                let subtotal = ClassesToCost( classData, classArray ); //needs a copy of class data to avoid changing stuff
                 let discount = 0;
                 if(discounts.length>0) 
                 {
