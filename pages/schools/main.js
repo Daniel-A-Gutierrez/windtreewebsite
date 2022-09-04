@@ -121,7 +121,7 @@ function generateClassList()
             discounts = Class.price;
             discounts = discounts.split(',').map( (s) => parseInt(s) );
         }
-        else if( (parseInt(Class.availability) > 0) && Class.grades.indexOf(studentGrade.toString())!==-1)
+        else if( (parseInt(Class.availability) > 0) && Class.grades.includes(studentGrade.toString()))
         {
             let classrow = document.createElement('div');
             classrow.setAttribute('class','class-row');
