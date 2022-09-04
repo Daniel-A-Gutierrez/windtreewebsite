@@ -113,7 +113,7 @@ async function decrementAvailability(auth,data,googleSheets)
                 {
                 // request body parameters
                 "range": `Classes!${ranges[i]}`,
-                "values": [`${availabilities[i] - 1}`]
+                "values": [[`${availabilities[i] - 1}`]]
                 },
             });
         console.log("RESPONSE");
