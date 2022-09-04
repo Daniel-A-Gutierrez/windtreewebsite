@@ -102,7 +102,7 @@ async function decrementAvailability(auth,data,googleSheets)
         let res = await googleSheets.spreadsheets.values.update(
             {
                 // The A1 notation of the values to update.
-                range: `Classes!${cell}`,
+                range: `Classes!${ranges[i]}`,
     
                 spreadsheetId: GOOGLE_SPREADSHEET_ID,
                 // How the input data should be interpreted.
