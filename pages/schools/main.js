@@ -100,7 +100,7 @@ function generateClassList()
     classTotal = 0;
     discounts = [];
     priceTracker.innerText = classTotal;
-    let studentGrade = parseInt(document.getElementById('student-grade').value);
+    let studentGrade = document.getElementById('student-grade').value;
     let frag = new DocumentFragment();
 
     let classArray = []; //checking and unchecking boxes manages array which sets classSelection.value
@@ -143,7 +143,7 @@ function generateClassList()
                 //get subtotal
                 let subtotal = ClassesToCost( classData, classArray );
                 let discount = 0;
-                if(discounts) 
+                if(discounts.length>0) 
                 {
                     if(discounts.length > classArray.length-1)
                         {if(classArray.length > 0){discount = discounts[classArray.length-1];}}
