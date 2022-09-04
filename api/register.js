@@ -60,15 +60,15 @@ async function decrementAvailability(auth,data,googleSheets)
 {
     console.log("DATA");
     console.log(data);
-    const GOOGLE_SPREADSHEET_ID = process.env.ENV_SCHOOLS_SHEET_ID;
-    const getRows = await googleSheets.spreadsheets.values.get({
+    let GOOGLE_SPREADSHEET_ID = process.env.ENV_SCHOOLS_SHEET_ID;
+    let getRows = await googleSheets.spreadsheets.values.get({
             auth,
             spreadsheetId:GOOGLE_SPREADSHEET_ID,
             range:"Classes"
         });
     let classes = getRows.data.values;
     console.log("CLASSES");
-    console.log(classes);
+    //console.log(classes);
     
     //get rows of classes student signed up for
     let matches = [];
@@ -117,7 +117,7 @@ async function decrementAvailability(auth,data,googleSheets)
                 },
             });
         console.log("RESPONSE");
-        console.log(res);
+        console.log(res.data);
     }
 }
 
