@@ -94,7 +94,7 @@ async function decrementAvailability(auth,data,googleSheets)
     console.log(availabilities);
 
     //convert those indeces to letters
-    ranges = matches.map( (rownum) => `C${rownum}` );
+    ranges = matches.map( (rownum) => `C${rownum+1}` );
     console.log("RANGES");
     console.log(ranges);
     for(let i = 0 ; i < ranges.length; i++)
