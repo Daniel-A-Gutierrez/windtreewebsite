@@ -76,6 +76,7 @@ async function addToAbridgedSheet(auth,data,googleSheets)
         data['parent phone'],
         data['allergies'],
         data['Conditions'],
+        data['transaction amount']
     ];
     const GOOGLE_SPREADSHEET_ID = process.env.ENV_SCHOOLS_SHEET_ID;
     await googleSheets.spreadsheets.values.append(
