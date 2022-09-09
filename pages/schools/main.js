@@ -48,15 +48,15 @@ async function filterClassesBySchool(allClassData, schoolName)
 //RECAPTCHA STUFF
 //make form submittable only after approved recaptcha 
 
-function enableSubmit(args)
-{
-    submit.removeAttribute('disabled');
-}
+// function enableSubmit(args)
+// {
+//     submit.removeAttribute('disabled');
+// }
 
-function disableSubmit(args)
-{
-    submit.setAttribute("disabled","");
-}
+// function disableSubmit(args)
+// {
+//     submit.setAttribute("disabled","");
+// }
 
 //
 function generateSchoolList(schools)
@@ -267,7 +267,7 @@ var transactionId = document.getElementById('transaction-id');
 var form = document.getElementById('registration');
 schoolSelect.value='default';
 schoolSelect.disabled=true;
-submit.disabled = true;
+//submit.disabled = true;
 gradeSelect.value='default';
 fetchAllClassData();
 
