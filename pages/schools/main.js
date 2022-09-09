@@ -243,6 +243,7 @@ paypal.Buttons({
       {
         const transaction = orderData.purchase_units[0].payments.captures[0];
         transactionId.value = transaction.id ;
+        transactionAmt.value = classTotal.toString();
         // Successful capture! For dev/demo purposes:
         //console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
         //alert(`Transaction ${transaction.status}: ${transaction.id}`);
@@ -264,6 +265,7 @@ var submit =  document.querySelector('#form-submit');
 var gradeSelect = document.getElementById('student-grade');
 var schoolSelect = document.getElementById("school-select");
 var transactionId = document.getElementById('transaction-id');
+var transactionAmt = document.getElementById('transaction-amount');
 var form = document.getElementById('registration');
 schoolSelect.value='default';
 schoolSelect.disabled=true;

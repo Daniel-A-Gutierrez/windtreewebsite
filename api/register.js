@@ -13,18 +13,50 @@ function decode(s, q) {
 }
 
 
-async function addToMasterSheet(auth, data, googleSheets)
+async function addToMasterSheet(auth, data = [], googleSheets)
 {
     const GOOGLE_SPREADSHEET_ID = process.env.ENV_MASTER_SHEET_ID;
+    let cols = [
+        "Birth Date",
+        "Student Age",
+        "Grade",
+        "Returning Student",
+        "Parent First Name",
+        "Parent Email",
+        "Parent Phone",
+        "Parent Relation",
+        "Address Line 1",
+        "Address Line 2",
+        "City",
+        "State",
+        "Zip Code",
+        "Country",
+        "Allergies",
+        "Medical Conditions",
+        "Classes",
+        "transaction amount",
+        "transaction id",
+    ];
+    let entries = [];
+    for(let i = 0 ; i < cols.length; i++)
+    {
+        entries.push(strIfNone(data, cols[i]));
+    }
     await googleSheets.spreadsheets.values.append(
         {
             auth, 
             spreadsheetId : GOOGLE_SPREADSHEET_ID,
             range:"Master List",
             valueInputOption:"USER_ENTERED",
-            resource: {values:[data]}
+            resource: {values:[entries]}
         }
         );
+}
+
+function strIfNone(obj, key)
+{
+    if(obj.hasOwnProperty(key)){return obj[key];}
+    else{return "";}
 }
 
 async function addToAbridgedSheet(auth,data,googleSheets)
@@ -86,8 +118,8 @@ async function decrementAvailability(auth,data,googleSheets)
             availabilities.push(c[2]);
         }
     }
-    console.log("Match log");
-    console.log(log);
+    //console.log("Match log");
+    //console.log(log);
     console.log("MATCHES");
     console.log(matches);
     console.log("Availabilities");
@@ -145,7 +177,7 @@ exports.handler = async (event,context) =>
         let vals = Object.values(data);
         console.log(data);
         //write data
-        let master = addToMasterSheet(serviceAccountAuth,vals,googleSheets);
+        let master = addToMasterSheet(serviceAccountAuth,data,googleSheets);
         let schools = addToAbridgedSheet(serviceAccountAuth,data,googleSheets); //needs names to parse
         
         await master;
